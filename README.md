@@ -3,7 +3,8 @@
 
 <a href="https://github.com/karcan/HRMS.PostgreSQL"> <img width=17 src="https://github.com/karcan/javaBootcamp/blob/master/images/postgresql-32.png?raw=true"> PostgreSQL</a>
 
-Java - Spring Based Software.
+Java - Spring Based.
+
 JavaSE-11 (jre)
 
 Dependencies
