@@ -4,7 +4,7 @@
 
 ### Java - Spring Based Software.
 ### JavaSE-11 (jre)
-### Dependencies : 
+### Dependencies
 - Spring Boot DevTools
 - Spring Web
 - Spring Data JPA
