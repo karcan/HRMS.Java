@@ -1,0 +1,32 @@
+package com.hrms.karcan.business.concretes;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hrms.karcan.business.abstracts.CandidateService;
+import com.hrms.karcan.dataAccess.abstracts.CandidateDao;
+import com.hrms.karcan.entity.Candidate;
+
+@Service
+public class CandidateManager implements CandidateService {
+	
+	private CandidateDao candidateDao;
+	
+	
+	@Autowired
+	public CandidateManager(CandidateDao candidateDao) {
+		super();
+		this.candidateDao = candidateDao;
+	}
+
+
+
+	@Override
+	public List<Candidate> getAll() {
+		return this.candidateDao.findAll();
+	}
+
+	
+}

@@ -9,7 +9,7 @@ import lombok.Data;
 @Table(name="job_titles")
 public class JobTitle {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	

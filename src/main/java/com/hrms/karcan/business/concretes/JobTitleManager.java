@@ -22,10 +22,16 @@ public class JobTitleManager implements JobTitleService {
 	}
 
 
-
 	@Override
 	public List<JobTitle> getAll() {
 		return this.jobTitleDao.findAll();
 	}
+
+
+	@Override
+	public JobTitle getById(int id) {
+		return this.jobTitleDao.findById(id).get();
+	}
+
 
 }
