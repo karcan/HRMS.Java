@@ -32,5 +32,10 @@ public class JobTitlesController {
 	public JobTitle getById(@PathVariable int id) {
 		return jobTitleService.getById(id);
 	}
+	
+	@GetMapping("getbytitle/{title}") 
+	public JobTitle getByTitle(@PathVariable String title) {
+		return jobTitleService.getByTitle(title);
+	}
 
 }

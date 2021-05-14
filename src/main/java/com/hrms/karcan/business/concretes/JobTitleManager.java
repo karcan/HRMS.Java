@@ -1,7 +1,6 @@
 package com.hrms.karcan.business.concretes;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +29,12 @@ public class JobTitleManager implements JobTitleService {
 
 	@Override
 	public JobTitle getById(int id) {
-		return this.jobTitleDao.findById(id).get();
+		return this.jobTitleDao.findById(id).orElse(null);
+	}
+	
+	@Override
+	public JobTitle getByTitle(String title) {
+		return this.jobTitleDao.findByTitle(title).orElse(null);
 	}
 
 

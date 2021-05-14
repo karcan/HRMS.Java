@@ -5,6 +5,8 @@ import java.util.List;
 import com.hrms.karcan.entity.JobTitle;
 
 public interface JobTitleService {
+	
 	List<JobTitle> getAll();
-	public JobTitle getById(int id);
+	JobTitle getById(int id);
+	JobTitle getByTitle(String title);
 }

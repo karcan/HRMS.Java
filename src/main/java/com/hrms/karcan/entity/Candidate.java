@@ -21,9 +21,9 @@ public class Candidate extends User{
 	private String lastName;
 	
 	@Column(name = "identification_number")
-	private String identityNumber;
+	private String identificationNumber;
 	
 	@Column(name = "birth_date")
-	private Date date;  
+	private Date birthDate;  
 	
 } 
