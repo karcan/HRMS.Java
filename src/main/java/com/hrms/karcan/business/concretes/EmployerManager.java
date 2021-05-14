@@ -23,7 +23,16 @@ public class EmployerManager implements EmployerService{
 		return this.employerDao.findAll();
 	}
 	
+	public Employer getById(int id) {
+		return this.employerDao.findById(id).orElse(null);
+	}
+	
 	public Employer getByPhoneNumber(String phoneNumber){
-		return this.employerDao.findEmployerByPhonesPhoneNumber(phoneNumber).orElse(null);
+		return this.employerDao.findAllByPhonesPhoneNumber(phoneNumber).orElse(null);
+	}
+
+	@Override
+	public void save(Employer employer) {
+		this.employerDao.save(employer);
 	}
 }

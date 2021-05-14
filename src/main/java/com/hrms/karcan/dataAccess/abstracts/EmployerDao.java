@@ -8,5 +8,5 @@ import org.springframework.data.repository.query.Param;
 import com.hrms.karcan.entity.Employer;
 
 public interface EmployerDao extends JpaRepository<Employer, Integer> {
-	Optional<Employer>  findEmployerByPhonesPhoneNumber(@Param("phoneNumber") String phoneNumber);
+	Optional<Employer> findAllByPhonesPhoneNumber(@Param("phoneNumber") String phoneNumber);
 }

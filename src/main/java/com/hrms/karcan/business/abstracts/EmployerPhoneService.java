@@ -6,4 +6,5 @@ import com.hrms.karcan.entity.EmployerPhone;
 
 public interface EmployerPhoneService {
 	List<EmployerPhone> getAll();
+	List<EmployerPhone> getByUserId(int userId);
 }

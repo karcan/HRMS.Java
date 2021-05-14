@@ -3,12 +3,11 @@ package com.hrms.karcan.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.hrms.karcan.business.abstracts.JobTitleService;
+import com.hrms.karcan.core.utilities.result.Result;
+import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.entity.JobTitle;
 
 @RestController
@@ -21,6 +20,12 @@ public class JobTitlesController {
 	public JobTitlesController(JobTitleService jobTitleService) {
 		super();
 		this.jobTitleService = jobTitleService;
+	}
+	
+	@PostMapping("save")
+	public Result save(@RequestBody JobTitle jobTitle) {
+		jobTitleService.save(jobTitle);
+		return new SuccessResult("başarılı");
 	}
 	
 	@GetMapping("getall")

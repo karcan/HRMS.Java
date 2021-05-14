@@ -29,6 +29,11 @@ public class CandidateManager implements CandidateService {
 	public List<Candidate> getAll() {
 		return this.candidateDao.findAll(); 
 	}
+	
+	@Override
+	public Candidate getById(int id) {
+		return this.candidateDao.findById(id).orElse(null);
+	}
 
 	@Override
 	public Candidate getByFirstName(String string) {
@@ -39,5 +44,5 @@ public class CandidateManager implements CandidateService {
 	public Candidate getByEmailAddress(String string) {
 		return this.candidateDao.findByEmailAddressIgnoreCase(string).orElse(null);
 	}
-	
+
 }

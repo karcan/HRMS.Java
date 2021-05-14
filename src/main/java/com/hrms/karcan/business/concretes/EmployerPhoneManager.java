@@ -23,5 +23,11 @@ public class EmployerPhoneManager implements EmployerPhoneService{
 	public List<EmployerPhone> getAll() {
 		return this.employerPhoneDao.findAll();
 	}
+
+
+	@Override
+	public List<EmployerPhone> getByUserId(int userId) {
+		return this.employerPhoneDao.findAllByEmployerId(userId);
+	}
 	
 }

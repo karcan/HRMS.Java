@@ -20,7 +20,11 @@ public class JobTitleManager implements JobTitleService {
 		this.jobTitleDao = jobTitleDao;
 	}
 
-
+	@Override
+	public void save(JobTitle jobTitle) {
+		this.jobTitleDao.save(jobTitle);
+	}
+	
 	@Override
 	public List<JobTitle> getAll() {
 		return this.jobTitleDao.findAll();

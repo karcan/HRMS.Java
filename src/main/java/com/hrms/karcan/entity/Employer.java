@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,7 +21,10 @@ public class Employer extends User{
 	@Column(name = "web_address")
 	private String webAddress;
 	
-	@OneToMany(mappedBy = "employer", cascade = CascadeType.ALL, orphanRemoval = true)
-	@JsonIgnoreProperties("employer")
+	@OneToMany(
+			cascade = CascadeType.ALL,
+	        mappedBy = "employer", 
+	        orphanRemoval=true)
+    @JsonManagedReference
     private List<EmployerPhone> phones;
 }

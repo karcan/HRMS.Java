@@ -3,8 +3,7 @@ package com.hrms.karcan.entity;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 @Data
@@ -17,8 +16,9 @@ public class EmployerPhone{
 	@Column(name = "id", updatable = false, nullable = false)
 	private int id;
 	
-	@ManyToOne()
-	@JsonIgnoreProperties(value = {"phones"})
+	@ManyToOne
+    @JoinColumn(name = "employer_id")
+    @JsonBackReference
 	private Employer employer;
 
 	@Column(name = "phone_number")

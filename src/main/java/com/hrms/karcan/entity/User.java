@@ -2,7 +2,7 @@ package com.hrms.karcan.entity;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
@@ -10,7 +10,7 @@ import lombok.Data;
 @Entity
 @Table(name="users")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+public abstract class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class User {
 	@Column(name="email_address")
 	private String emailAddress;
 	
-	@JsonIgnore
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@Column(name="password")
 	private String password;
 }

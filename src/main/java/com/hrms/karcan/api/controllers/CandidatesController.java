@@ -24,28 +24,33 @@ public class CandidatesController {
 	public CandidatesController(CandidateService candidateService) {
 		super();
 		this.candidateService = candidateService;
-	}
+	};
 	
 	@PostMapping(path = "save")
 	public Result save(@RequestBody Candidate candidate) {
 		this.candidateService.save(candidate);
 		
 		return new SuccessResult("mesaj");
-	}
+	};
 
 	@GetMapping(path = "getall")
 	public List<Candidate> getAll(){
 		return this.candidateService.getAll(); 
 	};
 	
+	@GetMapping(path = "getbyid/{id}")
+	public Candidate getById(@PathVariable int id) {
+		return this.candidateService.getById(id);
+	};
+	
 	@GetMapping(path = "getbyfirstname/{firstName}")
 	public Candidate getByFirstname(@PathVariable String firstName) {
 		return this.candidateService.getByFirstName(firstName);
-	}
+	};
 	
 	@GetMapping(path = "getbyemailaddress/{emailAddress}")
 	public Candidate getByEmailAddress(@PathVariable String emailAddress) {
 		return this.candidateService.getByEmailAddress(emailAddress);
-	}
+	};
 	
 }
