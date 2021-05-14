@@ -2,6 +2,8 @@ package com.hrms.karcan.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -18,6 +20,7 @@ public class User {
 	@Column(name="email_address")
 	private String emailAddress;
 	
+	@JsonIgnore
 	@Column(name="password")
 	private String password;
 }
