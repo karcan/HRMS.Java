@@ -1,1 +1,0 @@
-web: java -jar webapp-runner.jar application.war
