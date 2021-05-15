@@ -1,24 +1,12 @@
 package com.hrms.karcan.core.utilities.result;
 
-public class SuccessResult implements Result {
-	private boolean success;
-	private String message;
-	
+public class SuccessResult extends Result {
+
 	public SuccessResult() {
-		this.success = true;
+		super(true);
 	}
 	
 	public SuccessResult(String message) {
-		this();
-		this.message = message;
+		super(true,message);
 	}
-
-	public boolean isSuccess() {
-		return success;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-	
 }

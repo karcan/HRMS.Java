@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.hrms.karcan.business.abstracts.EmployerPhoneService;
 import com.hrms.karcan.dataAccess.abstracts.EmployerPhoneDao;
-import com.hrms.karcan.entity.EmployerPhone;
+import com.hrms.karcan.entity.concretes.EmployerPhone;
 
 @Service
 public class EmployerPhoneManager implements EmployerPhoneService{

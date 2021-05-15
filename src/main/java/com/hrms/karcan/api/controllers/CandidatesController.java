@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hrms.karcan.business.abstracts.CandidateService;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
-import com.hrms.karcan.entity.Candidate;
+import com.hrms.karcan.entity.concretes.Candidate;
 @RestController
 @RequestMapping(path = "/api/candidates/")
 public class CandidatesController {

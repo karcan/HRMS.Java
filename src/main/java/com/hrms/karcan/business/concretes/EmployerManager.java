@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hrms.karcan.business.abstracts.EmployerService;
 import com.hrms.karcan.dataAccess.abstracts.EmployerDao;
-import com.hrms.karcan.entity.Employer;
+import com.hrms.karcan.entity.concretes.Employer;
 
 @Service
 public class EmployerManager implements EmployerService{

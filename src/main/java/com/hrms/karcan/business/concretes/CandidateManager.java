@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hrms.karcan.business.abstracts.CandidateService;
 import com.hrms.karcan.dataAccess.abstracts.CandidateDao;
-import com.hrms.karcan.entity.Candidate;
+import com.hrms.karcan.entity.concretes.Candidate;
 
 @Service
 public class CandidateManager implements CandidateService {

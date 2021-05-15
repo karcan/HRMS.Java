@@ -1,4 +1,4 @@
-package com.hrms.karcan.entity;
+package com.hrms.karcan.entity.concretes;
 
 import javax.persistence.*;
 

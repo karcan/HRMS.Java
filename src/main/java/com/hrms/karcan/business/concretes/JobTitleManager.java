@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.hrms.karcan.business.abstracts.JobTitleService;
 import com.hrms.karcan.dataAccess.abstracts.JobTitleDao;
-import com.hrms.karcan.entity.JobTitle;
+import com.hrms.karcan.entity.concretes.JobTitle;
 
 @Service
 public class JobTitleManager implements JobTitleService {

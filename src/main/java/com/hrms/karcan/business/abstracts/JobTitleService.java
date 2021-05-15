@@ -2,7 +2,7 @@ package com.hrms.karcan.business.abstracts;
 
 import java.util.List;
 
-import com.hrms.karcan.entity.JobTitle;
+import com.hrms.karcan.entity.concretes.JobTitle;
 
 public interface JobTitleService {
 	void save(JobTitle jobTitle);

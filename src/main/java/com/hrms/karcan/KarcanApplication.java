@@ -12,8 +12,9 @@ public class KarcanApplication extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(KarcanApplication.class);
 	}	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(KarcanApplication.class, args);
-	}
+	} 
 
 }
