@@ -11,7 +11,7 @@
 	<groupId>com.hrms</groupId>
 	<artifactId>karcan</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>karcan</name>
 	<description>Human Resource Management System</description>
 	<properties>
