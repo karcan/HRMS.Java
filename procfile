@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -war karcan-0.0.1-SNAPSHOT.war
+web: java -jar webapp-runner.jar application.war
