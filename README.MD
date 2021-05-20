@@ -4,9 +4,9 @@
 - [PostgreSQL](https://github.com/karcan/HRMS.PostgreSQL)
 - [Live API](https://hrms-karcan.herokuapp.com/api/job-titles/getall)
 
-####Java(1.8) - Spring Boot based.
+#### Java(1.8) - Spring Boot based.
 
-####Dependencies:
+#### Dependencies:
 - Spring Boot DevTools
 - Spring Web
 - Spring Data JPA
