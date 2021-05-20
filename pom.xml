@@ -11,10 +11,12 @@
     <groupId>com.hrms</groupId>
     <artifactId>karcan</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>HRMS.Java</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Human Resource Management System</description>
     <properties>
         <java.version>16</java.version>
+        <start-class>com.hrms.karcan.Application</start-class>
     </properties>
     <dependencies>
         <dependency>
@@ -67,6 +69,15 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
