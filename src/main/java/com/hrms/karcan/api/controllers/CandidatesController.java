@@ -2,7 +2,6 @@ package com.hrms.karcan.api.controllers;
 
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,7 +36,13 @@ public class CandidatesController {
 	
 	@PostMapping(path = "save")
 	public ResponseEntity<Result> save(@RequestBody Candidate candidate){
-		return new ResponseEntity<>(this.candidateService.save(candidate), HttpStatus.OK);
+		Result result = this.candidateService.save(candidate);
+		if(result.isSuccess()) {
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+		}
+		
 	}
 	
 }
