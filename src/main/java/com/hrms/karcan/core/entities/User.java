@@ -55,14 +55,14 @@ public class User{
     @Column(name = "is_active")
     private boolean active = true;
 	
-	@NotBlank(message = ValidationMessages.notBlank)
-	@Length(max = 320, message = ValidationMessages.emailMaxLength)
-	@Email(message = ValidationMessages.emailFormat)
+	@NotBlank(message = ValidationMessages.NOT_BLANK)
+	@Length(max = 320, message = ValidationMessages.EMAIL_MAX_LENGTH)
+	@Email(message = ValidationMessages.EMAIL_VERIFICATION)
 	@Column(name = "email")
 	private String email;
 	
-	@NotBlank(message = ValidationMessages.notBlank)
-	@Length(max = 25, message = ValidationMessages.passwordMaxLength)
+	@NotBlank(message = ValidationMessages.NOT_BLANK)
+	@Length(max = 25, message = ValidationMessages.PASSWORD_MAX_LENGTH)
 	@Column(name = "password")
 	private String password;
 }

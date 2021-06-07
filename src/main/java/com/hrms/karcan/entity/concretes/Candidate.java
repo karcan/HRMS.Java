@@ -24,19 +24,19 @@ import lombok.NoArgsConstructor;
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Candidate extends User {
 	
-	@NotBlank(message = ValidationMessages.notBlank)
+	@NotBlank(message = ValidationMessages.NOT_BLANK)
 	@Column(name = "first_name")
 	private String firstName;
 	
-	@NotBlank(message = ValidationMessages.notBlank)
+	@NotBlank(message = ValidationMessages.NOT_BLANK)
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@NotBlank(message = ValidationMessages.notBlank)
+	@NotBlank(message = ValidationMessages.NOT_BLANK)
 	@Column(name = "identity_number")
 	private String identityNumber;
 	
-	@NotNull(message = ValidationMessages.notBlank)
+	@NotNull(message = ValidationMessages.NOT_BLANK)
 	@Column(name = "birth_date")
 	private java.sql.Date birthDate; 
 }

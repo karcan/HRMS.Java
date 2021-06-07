@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hrms.karcan.business.abstracts.CandidateService;
+import com.hrms.karcan.core.constants.ValidationMessages;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.ErrorDataResult;
 import com.hrms.karcan.core.utilities.result.Result;
@@ -62,7 +63,7 @@ public class CandidatesController {
 			validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
 		
-		ErrorDataResult<Object> errors = new ErrorDataResult<Object>("Doğrulama hataları",validationErrors);
+		ErrorDataResult<Object> errors = new ErrorDataResult<Object>(ValidationMessages.VALIDATION_ERROR,validationErrors);
 		return errors;
 	}
 	

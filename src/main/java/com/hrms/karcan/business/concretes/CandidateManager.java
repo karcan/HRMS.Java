@@ -35,7 +35,7 @@ public class CandidateManager implements CandidateService {
 	public Result save(Candidate candidate) {
 		Result identityResult = this.identityValidationService.checkIdentityNumber(candidate.getIdentityNumber(), candidate.getFirstName(), candidate.getLastName(), candidate.getBirthDate());
 		if(!identityResult.isSuccess()){
-			return new ErrorResult(ValidationMessages.personIdentityValidationError);
+			return new ErrorResult(ValidationMessages.PERSON_ID_VERIFICATION);
 		}
 		this.candidateRepository.save(candidate);
 		return new SuccessResult();
