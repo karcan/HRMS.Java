@@ -8,13 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.hrms.karcan.core.constants.ValidationMessages;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -51,4 +53,14 @@ public class User{
 	@JsonIgnore
     @Column(name = "is_active")
     private boolean active = true;
+	
+	@NotBlank(message = ValidationMessages.notBlank)
+	@Max(value = 320, message = ValidationMessages.emailMaxLength)
+	@Column(name = "email")
+	private String email;
+	
+	@NotBlank(message = ValidationMessages.notBlank)
+	@Max(value = 25, message = ValidationMessages.passwordMaxLength)
+	@Column(name = "password")
+	private String password;
 }

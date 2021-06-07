@@ -29,6 +29,6 @@ public class JobTitle extends BaseEntity{
 	private int id;
 	
 	@Column(name = "title")
-	@NotBlank(message = ValidationMessages.notBlankTitle)
+	@NotBlank(message = ValidationMessages.notBlank)
 	private String title;
 }
