@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.hrms.karcan.core.entities.User;
 
@@ -34,7 +35,7 @@ public class Candidate extends User {
 	@Column(name = "identity_number")
 	private String identityNumber;
 	
-	@NotBlank
+	@NotNull
 	@Column(name = "birth_date")
 	private java.sql.Date birthDate; 
 }
