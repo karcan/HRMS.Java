@@ -7,6 +7,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.hrms.karcan.core.constants.ValidationMessages;
 import com.hrms.karcan.core.entities.User;
 
 import lombok.AllArgsConstructor;
@@ -23,19 +24,19 @@ import lombok.NoArgsConstructor;
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Candidate extends User {
 	
-	@NotBlank
+	@NotBlank(message = ValidationMessages.notBlank)
 	@Column(name = "first_name")
 	private String firstName;
 	
-	@NotBlank
+	@NotBlank(message = ValidationMessages.notBlank)
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@NotBlank
+	@NotBlank(message = ValidationMessages.notBlank)
 	@Column(name = "identity_number")
 	private String identityNumber;
 	
-	@NotNull
+	@NotNull(message = ValidationMessages.notBlank)
 	@Column(name = "birth_date")
 	private java.sql.Date birthDate; 
 }
