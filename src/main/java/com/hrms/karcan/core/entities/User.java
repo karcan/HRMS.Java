@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 
@@ -55,12 +56,13 @@ public class User{
     private boolean active = true;
 	
 	@NotBlank(message = ValidationMessages.notBlank)
-	@Max(value = 320, message = ValidationMessages.emailMaxLength)
+	@Length(max = 320, message = ValidationMessages.emailMaxLength)
+	@Email(message = ValidationMessages.emailFormat)
 	@Column(name = "email")
 	private String email;
 	
 	@NotBlank(message = ValidationMessages.notBlank)
-	@Max(value = 25, message = ValidationMessages.passwordMaxLength)
+	@Length(max = 25, message = ValidationMessages.passwordMaxLength)
 	@Column(name = "password")
 	private String password;
 }
