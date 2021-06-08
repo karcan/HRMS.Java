@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hrms.karcan.business.abstracts.CandidateService;
-import com.hrms.karcan.core.constants.ValidationMessages;
+import com.hrms.karcan.business.constants.ValidationMessages;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.ErrorDataResult;
 import com.hrms.karcan.core.utilities.result.Result;
@@ -45,7 +46,9 @@ public class CandidatesController {
 	
 	@PostMapping(path = "save")
 	public ResponseEntity<Result> save(@Valid @RequestBody Candidate candidate){
+		
 		Result result = this.candidateService.save(candidate);
+		
 		if(result.isSuccess()) {
 			return new ResponseEntity<>(result, HttpStatus.OK);
 		}else {
@@ -56,8 +59,7 @@ public class CandidatesController {
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public ErrorDataResult<Object> handleValidationException
-	(MethodArgumentNotValidException exceptions){
+	public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions){
 		Map<String,String> validationErrors = new HashMap<String, String>();
 		for(FieldError fieldError : exceptions.getBindingResult().getFieldErrors()) {
 			validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
@@ -65,6 +67,17 @@ public class CandidatesController {
 		
 		ErrorDataResult<Object> errors = new ErrorDataResult<Object>(ValidationMessages.VALIDATION_ERROR,validationErrors);
 		return errors;
+	}
+	
+	
+	@ExceptionHandler(ConstraintViolationException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorDataResult<Object> handleSqlConstraintException(ConstraintViolationException exceptions)
+	{
+		Map<String, String> validationError = new HashMap<String, String>();
+		validationError.put("message", exceptions.getCause().getMessage());
+		validationError.put("constraint", exceptions.getConstraintName());
+		return new ErrorDataResult<Object>(validationError);
 	}
 	
 }

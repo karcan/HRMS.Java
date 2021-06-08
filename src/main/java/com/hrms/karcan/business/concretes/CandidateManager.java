@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.hrms.karcan.business.abstracts.CandidateService;
 import com.hrms.karcan.business.abstracts.IdentityValidationService;
-import com.hrms.karcan.core.constants.ValidationMessages;
+import com.hrms.karcan.business.abstracts.MailSendService;
+import com.hrms.karcan.business.abstracts.UserCheckService;
+import com.hrms.karcan.business.constants.ValidationMessages;
+import com.hrms.karcan.core.utilities.business.CheckEngine;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.ErrorResult;
 import com.hrms.karcan.core.utilities.result.Result;
@@ -16,34 +19,74 @@ import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.CandidateRepository;
 import com.hrms.karcan.entity.concretes.Candidate;
 
-import net.bytebuddy.asm.Advice.This;
 
 @Service
 public class CandidateManager implements CandidateService {
 
 	private CandidateRepository candidateRepository;
 	private IdentityValidationService identityValidationService;
+	private UserCheckService userCheckService;
+	private MailSendService mailSendService;
 	
 	@Autowired
-	public CandidateManager(CandidateRepository candidateRepository, IdentityValidationService identityValidationService) {
+	public CandidateManager(CandidateRepository candidateRepository, IdentityValidationService identityValidationService, UserCheckService userCheckService, MailSendService mailSendService) {
 		this.candidateRepository = candidateRepository;
 		this.identityValidationService = identityValidationService;
+		this.userCheckService = userCheckService;
+		this.mailSendService = mailSendService;
 	}
 	
 	
 	@Override
 	public Result save(Candidate candidate) {
-		Result identityResult = this.identityValidationService.checkIdentityNumber(candidate.getIdentityNumber(), candidate.getFirstName(), candidate.getLastName(), candidate.getBirthDate());
-		if(!identityResult.isSuccess()){
-			return new ErrorResult(ValidationMessages.PERSON_ID_VERIFICATION);
+		
+		Result result = CheckEngine.run(
+				checkCandidateIsNotRealPerson(candidate),
+				this.userCheckService.checkIfEmailAlreadyExists(candidate.getEmail(), candidate.getId()),
+				checkIfIdentityNumberAlreadyExists(candidate)
+				);
+		
+		if(!result.isSuccess()) {
+			return result;
 		}
+		
 		this.candidateRepository.save(candidate);
+		
+		//TODO: get activation code for user activation.
+		this.mailSendService.send(candidate.getEmail(), null);
 		return new SuccessResult();
 	}
 
 	@Override
 	public DataResult<List<Candidate>> getAll() {
 		return new SuccessDataResult<List<Candidate>>(this.candidateRepository.findAll());
+	}
+
+	
+	private Result checkCandidateIsNotRealPerson(Candidate candidate)
+	{
+		Result identityResult = this.identityValidationService.checkIdentityNumber(
+				candidate.getIdentityNumber(), 
+				candidate.getFirstName(), 
+				candidate.getLastName(), 
+				candidate.getBirthDate()
+				);
+		
+		if(!identityResult.isSuccess()){
+			return new ErrorResult(ValidationMessages.PERSON_ID_VERIFICATION);
+		}
+		
+		return new SuccessResult();
+	}
+	
+	private Result checkIfIdentityNumberAlreadyExists(Candidate candidate) {
+		boolean result = this.candidateRepository.existsByIdentityNumberAndIdNot(candidate.getIdentityNumber(), candidate.getId());
+		
+		if(result) {
+			return new ErrorResult(ValidationMessages.USER_IDENTITY_NUMBER_IS_ALREADY_EXISTS);
+		}
+		
+		return new SuccessResult();
 	}
 
 }

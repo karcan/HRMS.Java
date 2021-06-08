@@ -1,9 +1,11 @@
-package com.hrms.karcan.core.entities;
+package com.hrms.karcan.core.entity;
 
 import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -17,7 +19,9 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.hrms.karcan.core.constants.ValidationMessages;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.hrms.karcan.business.constants.ValidationMessages;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,6 +38,7 @@ import lombok.NoArgsConstructor;
 public class User{
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private int id;
 	
@@ -53,7 +58,7 @@ public class User{
     
 	@JsonIgnore
     @Column(name = "is_active")
-    private boolean active = true;
+    private boolean active = false;
 	
 	@NotBlank(message = ValidationMessages.NOT_BLANK)
 	@Length(max = 320, message = ValidationMessages.EMAIL_MAX_LENGTH)

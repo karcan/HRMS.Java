@@ -1,4 +1,4 @@
-package com.hrms.karcan.core.entities;
+package com.hrms.karcan.core.entity;
 
 import java.time.Instant;
 
@@ -27,18 +27,18 @@ public class BaseEntity {
     @Column(name = "created_date", updatable = false)
     private Instant createDate = Instant.now();
 	
-	//@JsonIgnore
+	@JsonIgnore
 	@Column(name = "created_user_id")
-	private int createdUserId;
+	private int createdUserId = 1;
 
     @LastModifiedDate
     @JsonIgnore
     @Column(name = "modified_date")
     private Instant modifiedDate = Instant.now();
     
-    //@JsonIgnore
+    @JsonIgnore
     @Column(name = "modified_user_id")
-    private int modifiedUserId;
+    private int modifiedUserId = 1;
     
     @JsonIgnore
     @Column(name = "is_deleted")

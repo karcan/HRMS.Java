@@ -7,17 +7,11 @@
 
 package tr.gov.nvi.tckimlik.WS;
 
-import java.util.Enumeration;
-
 public class KPSPublicSoapStub extends org.apache.axis.client.Stub implements tr.gov.nvi.tckimlik.WS.KPSPublicSoap {
-    @SuppressWarnings("rawtypes")
-	private java.util.Vector cachedSerClasses = new java.util.Vector();
-    @SuppressWarnings("rawtypes")
-	private java.util.Vector cachedSerQNames = new java.util.Vector();
-    @SuppressWarnings("rawtypes")
-	private java.util.Vector cachedSerFactories = new java.util.Vector();
-    @SuppressWarnings("rawtypes")
-	private java.util.Vector cachedDeserFactories = new java.util.Vector();
+    private java.util.Vector cachedSerClasses = new java.util.Vector();
+    private java.util.Vector cachedSerQNames = new java.util.Vector();
+    private java.util.Vector cachedSerFactories = new java.util.Vector();
+    private java.util.Vector cachedDeserFactories = new java.util.Vector();
 
     static org.apache.axis.description.OperationDesc [] _operations;
 
@@ -89,7 +83,7 @@ public class KPSPublicSoapStub extends org.apache.axis.client.Stub implements tr
             if (super.cachedPortName != null) {
                 _call.setPortName(super.cachedPortName);
             }
-            Enumeration<Object> keys = super.cachedProperties.keys();
+            java.util.Enumeration keys = super.cachedProperties.keys();
             while (keys.hasMoreElements()) {
                 java.lang.String key = (java.lang.String) keys.nextElement();
                 _call.setProperty(key, super.cachedProperties.get(key));
@@ -101,8 +95,7 @@ public class KPSPublicSoapStub extends org.apache.axis.client.Stub implements tr
         }
     }
 
-    @SuppressWarnings("deprecation")
-	public boolean TCKimlikNoDogrula(long TCKimlikNo, java.lang.String ad, java.lang.String soyad, int dogumYili) throws java.rmi.RemoteException {
+    public boolean TCKimlikNoDogrula(long TCKimlikNo, java.lang.String ad, java.lang.String soyad, int dogumYili) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -118,7 +111,7 @@ public class KPSPublicSoapStub extends org.apache.axis.client.Stub implements tr
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new Long(TCKimlikNo), ad, soyad, new java.lang.Integer(dogumYili)});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Long(TCKimlikNo), ad, soyad, new java.lang.Integer(dogumYili)});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
