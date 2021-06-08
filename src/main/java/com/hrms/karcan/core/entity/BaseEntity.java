@@ -25,7 +25,7 @@ public class BaseEntity {
 	@CreatedDate
     @JsonIgnore
     @Column(name = "created_date", updatable = false)
-    private Instant createDate = Instant.now();
+    private Instant createdDate = Instant.now();
 	
 	@JsonIgnore
 	@Column(name = "created_user_id")

@@ -5,9 +5,11 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.entity.concretes.Job;
+import com.hrms.karcan.entity.dtos.JobSummaryDto;
 
 @RestController
 @RequestMapping(path = "/api/jobs")
@@ -34,12 +37,43 @@ public class JobsController {
 	public ResponseEntity<DataResult<List<Job>>> getAll() {
 		return new ResponseEntity<>(this.jobService.getAll(), HttpStatus.OK);
 	}
+	
+	@GetMapping("dtos/summary-table")
+	public ResponseEntity<DataResult<List<JobSummaryDto>>> getAllJobSummaryDto(){
+		return new ResponseEntity<>(this.jobService.getAllJobSummaryDto(), HttpStatus.OK); 
+	}
+	
+	@GetMapping("dtos/summary-table/order")
+	public ResponseEntity<DataResult<List<JobSummaryDto>>> getAllJobSummaryDto(Sort.Direction sort, String property){
+		return new ResponseEntity<>(this.jobService.getAllJobSummaryDtoSorted(sort, property), HttpStatus.OK); 
+	}
+	
+	@GetMapping("dtos/summary-table/contains/company-name")
+	public ResponseEntity<DataResult<List<JobSummaryDto>>> getAllJobSummaryDtoByCompanyName(String companyName){
+		return new ResponseEntity<>(this.jobService.getAllJobSummaryDtoByCompanyName(companyName), HttpStatus.OK); 
+	}
+	
+	@GetMapping("dtos/summary-table/contains/job-title")
+	public ResponseEntity<DataResult<List<JobSummaryDto>>> getAllJobSummaryDtoByJobTitle(String jobTitle){
+		return new ResponseEntity<>(this.jobService.getAllJobSummaryDtoByJobTitle(jobTitle), HttpStatus.OK); 
+	}
 
 	@PostMapping("save")
 	public ResponseEntity<Result> save(@Valid @RequestBody Job job) {
 
 		Result result = this.jobService.save(job);
 
+		if (!result.isSuccess()) {
+			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+		}
+
+		return new ResponseEntity<>(new SuccessResult(), HttpStatus.OK);
+	}
+	
+	@PostMapping("set/active/{id}/{status}")
+	public ResponseEntity<Result> setActive(@PathVariable(name = "id") int id, @PathVariable(name = "status") boolean status){
+		Result result = this.jobService.setActive(id, status);
+		
 		if (!result.isSuccess()) {
 			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
 		}
