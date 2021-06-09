@@ -2,7 +2,6 @@ package com.hrms.karcan.business.concretes;
 
 import java.util.List;
 
-import javax.persistence.Persistence;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;

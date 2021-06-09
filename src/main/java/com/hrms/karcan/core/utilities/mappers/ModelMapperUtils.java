@@ -8,16 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class ModelMapperUtils {
-	private static ModelMapper modelMapper;
-	
-	@Autowired
-	public ModelMapperUtils(ModelMapper modelMapper) {
-		super();
-		ModelMapperUtils.modelMapper = modelMapper;
-	}
+	private static ModelMapper modelMapper = new ModelMapper();
 
 	public static <S, T> List<T> toList(List<S> source, Class<T> targetClass){
-		return source.stream().map(element -> modelMapper.map(element, targetClass)).collect(Collectors.toList());
+		modelMapper.getConfiguration().setAmbiguityIgnored(true);
+		
+		return source.stream().map(element -> modelMapper.map(element, targetClass))
+				.collect(Collectors.toList());
 		
 	}
 	

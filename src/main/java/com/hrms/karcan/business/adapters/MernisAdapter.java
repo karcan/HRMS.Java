@@ -11,7 +11,7 @@ import com.hrms.karcan.core.utilities.result.ErrorResult;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 
-import tr.gov.nvi.tckimlik.WS.KPSPublicSoapProxy;
+import outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoapProxy;
 
 @Service
 public class MernisAdapter implements IdentityValidationService {

@@ -11,7 +11,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
@@ -19,8 +18,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.hrms.karcan.business.constants.ValidationMessages;
 
 import lombok.AllArgsConstructor;
@@ -63,7 +60,7 @@ public class User{
 	@NotBlank(message = ValidationMessages.NOT_BLANK)
 	@Length(max = 320, message = ValidationMessages.EMAIL_MAX_LENGTH)
 	@Email(message = ValidationMessages.EMAIL_VERIFICATION)
-	@Column(name = "email")
+	@Column(name = "email", unique = true)
 	private String email;
 	
 	@NotBlank(message = ValidationMessages.NOT_BLANK)

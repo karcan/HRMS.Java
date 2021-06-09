@@ -5,13 +5,17 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package tr.gov.nvi.tckimlik.WS;
+package outsources.tr.gov.nvi.tckimlik.WS;
 
-public class KPSPublicSoapStub extends org.apache.axis.client.Stub implements tr.gov.nvi.tckimlik.WS.KPSPublicSoap {
-    private java.util.Vector cachedSerClasses = new java.util.Vector();
-    private java.util.Vector cachedSerQNames = new java.util.Vector();
-    private java.util.Vector cachedSerFactories = new java.util.Vector();
-    private java.util.Vector cachedDeserFactories = new java.util.Vector();
+public class KPSPublicSoapStub extends org.apache.axis.client.Stub implements outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoap {
+    @SuppressWarnings({ "rawtypes", "unused" })
+	private java.util.Vector cachedSerClasses = new java.util.Vector();
+    @SuppressWarnings({ "unused", "rawtypes" })
+	private java.util.Vector cachedSerQNames = new java.util.Vector();
+    @SuppressWarnings({ "rawtypes", "unused" })
+	private java.util.Vector cachedSerFactories = new java.util.Vector();
+    @SuppressWarnings({ "rawtypes", "unused" })
+	private java.util.Vector cachedDeserFactories = new java.util.Vector();
 
     static org.apache.axis.description.OperationDesc [] _operations;
 
@@ -83,7 +87,8 @@ public class KPSPublicSoapStub extends org.apache.axis.client.Stub implements tr
             if (super.cachedPortName != null) {
                 _call.setPortName(super.cachedPortName);
             }
-            java.util.Enumeration keys = super.cachedProperties.keys();
+            @SuppressWarnings("rawtypes")
+			java.util.Enumeration keys = super.cachedProperties.keys();
             while (keys.hasMoreElements()) {
                 java.lang.String key = (java.lang.String) keys.nextElement();
                 _call.setProperty(key, super.cachedProperties.get(key));
@@ -111,7 +116,8 @@ public class KPSPublicSoapStub extends org.apache.axis.client.Stub implements tr
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Long(TCKimlikNo), ad, soyad, new java.lang.Integer(dogumYili)});
+ try {        @SuppressWarnings("removal")
+java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Long(TCKimlikNo), ad, soyad, new java.lang.Integer(dogumYili)});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;

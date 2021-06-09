@@ -5,9 +5,10 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package tr.gov.nvi.tckimlik.WS;
+package outsources.tr.gov.nvi.tckimlik.WS;
 
-public class KPSPublicLocator extends org.apache.axis.client.Service implements tr.gov.nvi.tckimlik.WS.KPSPublic {
+@SuppressWarnings("serial")
+public class KPSPublicLocator extends org.apache.axis.client.Service implements outsources.tr.gov.nvi.tckimlik.WS.KPSPublic {
 
     public KPSPublicLocator() {
     }
@@ -39,7 +40,7 @@ public class KPSPublicLocator extends org.apache.axis.client.Service implements 
         KPSPublicSoapWSDDServiceName = name;
     }
 
-    public tr.gov.nvi.tckimlik.WS.KPSPublicSoap getKPSPublicSoap() throws javax.xml.rpc.ServiceException {
+    public outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoap getKPSPublicSoap() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(KPSPublicSoap_address);
@@ -50,9 +51,9 @@ public class KPSPublicLocator extends org.apache.axis.client.Service implements 
         return getKPSPublicSoap(endpoint);
     }
 
-    public tr.gov.nvi.tckimlik.WS.KPSPublicSoap getKPSPublicSoap(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoap getKPSPublicSoap(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
-            tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub _stub = new tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub(portAddress, this);
+            outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub _stub = new outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub(portAddress, this);
             _stub.setPortName(getKPSPublicSoapWSDDServiceName());
             return _stub;
         }
@@ -70,10 +71,10 @@ public class KPSPublicLocator extends org.apache.axis.client.Service implements 
      * If this service has no port for the given interface,
      * then ServiceException is thrown.
      */
-    public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
+    public java.rmi.Remote getPort(@SuppressWarnings("rawtypes") Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
-            if (tr.gov.nvi.tckimlik.WS.KPSPublicSoap.class.isAssignableFrom(serviceEndpointInterface)) {
-                tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub _stub = new tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub(new java.net.URL(KPSPublicSoap_address), this);
+            if (outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoap.class.isAssignableFrom(serviceEndpointInterface)) {
+                outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub _stub = new outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub(new java.net.URL(KPSPublicSoap_address), this);
                 _stub.setPortName(getKPSPublicSoapWSDDServiceName());
                 return _stub;
             }
@@ -89,7 +90,7 @@ public class KPSPublicLocator extends org.apache.axis.client.Service implements 
      * If this service has no port for the given interface,
      * then ServiceException is thrown.
      */
-    public java.rmi.Remote getPort(javax.xml.namespace.QName portName, Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
+    public java.rmi.Remote getPort(javax.xml.namespace.QName portName, @SuppressWarnings("rawtypes") Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         if (portName == null) {
             return getPort(serviceEndpointInterface);
         }
@@ -108,9 +109,11 @@ public class KPSPublicLocator extends org.apache.axis.client.Service implements 
         return new javax.xml.namespace.QName("http://tckimlik.nvi.gov.tr/WS", "KPSPublic");
     }
 
-    private java.util.HashSet ports = null;
+    @SuppressWarnings("rawtypes")
+	private java.util.HashSet ports = null;
 
-    public java.util.Iterator getPorts() {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
             ports.add(new javax.xml.namespace.QName("http://tckimlik.nvi.gov.tr/WS", "KPSPublicSoap"));

@@ -13,7 +13,6 @@ import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hrms.karcan.business.constants.ValidationMessages;
-import com.hrms.karcan.core.entity.BaseEntity;
 import com.hrms.karcan.core.entity.User;
 
 import lombok.AllArgsConstructor;
@@ -23,20 +22,19 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "job_titles")
+@Table(name = "website_types")
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class JobTitle extends BaseEntity{
-	
+public class WebsiteType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "job_title_id")
+	@Column(name = "website_type_id")
 	private int id;
 	
-	@Column(name = "title", unique = true)
 	@NotBlank(message = ValidationMessages.NOT_BLANK)
-	private String title;
+	@Column(name = "name", unique = true)
+	private String name;
 	
 	//relation mapping.
 	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)

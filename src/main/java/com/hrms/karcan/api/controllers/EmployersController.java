@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hrms.karcan.business.abstracts.EmployerService;
 import com.hrms.karcan.core.utilities.result.DataResult;
-import com.hrms.karcan.core.utilities.result.ErrorResult;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
