@@ -14,5 +14,5 @@ public class ResumeWebsiteDetailDto {
 	@JsonProperty("websiteTypeId")
 	private int websitetypeid;
 	private String websitetypeName;
-	private String website;
+	private String website; 
 }
