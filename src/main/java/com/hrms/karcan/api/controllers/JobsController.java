@@ -38,22 +38,22 @@ public class JobsController {
 		return new ResponseEntity<>(this.jobService.getAll(), HttpStatus.OK);
 	}
 	
-	@GetMapping("dtos/summary-table")
+	@GetMapping("summary-table")
 	public ResponseEntity<DataResult<List<JobSummaryDto>>> getAllJobSummaryDto(){
 		return new ResponseEntity<>(this.jobService.getAllJobSummaryDto(), HttpStatus.OK); 
 	}
 	
-	@GetMapping("dtos/summary-table/order")
+	@GetMapping("summary-table/order")
 	public ResponseEntity<DataResult<List<JobSummaryDto>>> getAllJobSummaryDto(Sort.Direction sort, String property){
 		return new ResponseEntity<>(this.jobService.getAllJobSummaryDtoSorted(sort, property), HttpStatus.OK); 
 	}
 	
-	@GetMapping("dtos/summary-table/contains/company-name")
+	@GetMapping("summary-table/contains/company-name")
 	public ResponseEntity<DataResult<List<JobSummaryDto>>> getAllJobSummaryDtoByCompanyName(String companyName){
 		return new ResponseEntity<>(this.jobService.getAllJobSummaryDtoByCompanyName(companyName), HttpStatus.OK); 
 	}
 	
-	@GetMapping("dtos/summary-table/contains/job-title")
+	@GetMapping("summary-table/contains/job-title")
 	public ResponseEntity<DataResult<List<JobSummaryDto>>> getAllJobSummaryDtoByJobTitle(String jobTitle){
 		return new ResponseEntity<>(this.jobService.getAllJobSummaryDtoByJobTitle(jobTitle), HttpStatus.OK); 
 	}
@@ -70,8 +70,17 @@ public class JobsController {
 		return new ResponseEntity<>(new SuccessResult(), HttpStatus.OK);
 	}
 	
-	@PostMapping("set/active/{id}/{status}")
-	public ResponseEntity<Result> setActive(@PathVariable(name = "id") int id, @PathVariable(name = "status") boolean status){
+	@PostMapping("set/active/{id}")
+	public ResponseEntity<Result> setActive(@PathVariable(name = "id") int id){
+		return this.setActivePassive(id, true);
+	}
+	
+	@PostMapping("set/passive/{id}")
+	public ResponseEntity<Result> setPassive(@PathVariable(name = "id") int id){
+		return this.setActivePassive(id, false);
+	}
+	
+	private ResponseEntity<Result> setActivePassive(int id, boolean status){
 		Result result = this.jobService.setActive(id, status);
 		
 		if (!result.isSuccess()) {

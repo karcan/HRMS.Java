@@ -14,7 +14,7 @@
 	<name>karcan</name>
 	<description>Human Resource Management System</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 		<start-class>com.hrms.karcan.KarcanApplication</start-class>
 	</properties>
 	<dependencies>
@@ -109,8 +109,8 @@
 			    <artifactId>maven-compiler-plugin</artifactId>
 
 			    <configuration>
-			        <source>11</source>
-			        <target>11</target>
+			        <source>1.8</source>
+			        <target>1.8</target>
 			    </configuration>
 			</plugin>
 		</plugins>

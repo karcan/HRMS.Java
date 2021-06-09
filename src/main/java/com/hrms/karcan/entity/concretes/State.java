@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hrms.karcan.business.constants.ValidationMessages;
 import com.hrms.karcan.core.entity.BaseEntity;
+import com.hrms.karcan.core.entity.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -52,5 +53,15 @@ public class State extends BaseEntity {
 	@JsonIgnore
 	@JoinColumn(name = "country_id" , insertable = false, updatable = false)
 	private Country country;
+	
+	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+	@JsonIgnore
+	@JoinColumn(name = "created_user_id", insertable = false, updatable = false)
+	private User createdUser; 
+	
+	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+	@JsonIgnore
+	@JoinColumn(name = "modified_user_id", insertable = false, updatable = false)
+	private User modifiedUser; 
 	
 }

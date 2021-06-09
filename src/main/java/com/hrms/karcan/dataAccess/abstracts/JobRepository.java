@@ -31,9 +31,9 @@ public interface JobRepository extends JpaRepository<Job, Integer> {
 			+ 	"(j.id as id, "
 			+ 	"u.companyName as companyName, "
 			+ 	"jt.title as jobTitle, "
-			+	 "j.applicantQuota as applicantQuota, "
+			+	"j.applicantQuota as applicantQuota, "
 			+ 	"j.createdDate as createdDate, "
-			+	 "j.lastApplicationDate as lastApplicationDate)"
+			+	"j.lastApplicationDate as lastApplicationDate)"
 			
 			+ 	"FROM Job j "
 			+ 	"JOIN j.jobTitle jt "
