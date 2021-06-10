@@ -21,9 +21,8 @@ import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.entity.dtos.resumes.ResumeDetailDto;
-import com.hrms.karcan.entity.dtos.resumes.ResumeQualificationDetailDto;
 
-import outsources.com.cloudinary.CloudinaryConfiguration;
+import outsource.com.cloudinary.CloudinaryConfiguration;
 
 @RestController
 @RequestMapping("api/resumes")

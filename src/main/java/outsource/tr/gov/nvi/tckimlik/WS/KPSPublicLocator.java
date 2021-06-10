@@ -5,10 +5,10 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package outsources.tr.gov.nvi.tckimlik.WS;
+package outsource.tr.gov.nvi.tckimlik.WS;
 
 @SuppressWarnings("serial")
-public class KPSPublicLocator extends org.apache.axis.client.Service implements outsources.tr.gov.nvi.tckimlik.WS.KPSPublic {
+public class KPSPublicLocator extends org.apache.axis.client.Service implements outsource.tr.gov.nvi.tckimlik.WS.KPSPublic {
 
     public KPSPublicLocator() {
     }
@@ -40,7 +40,7 @@ public class KPSPublicLocator extends org.apache.axis.client.Service implements 
         KPSPublicSoapWSDDServiceName = name;
     }
 
-    public outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoap getKPSPublicSoap() throws javax.xml.rpc.ServiceException {
+    public outsource.tr.gov.nvi.tckimlik.WS.KPSPublicSoap getKPSPublicSoap() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(KPSPublicSoap_address);
@@ -51,9 +51,9 @@ public class KPSPublicLocator extends org.apache.axis.client.Service implements 
         return getKPSPublicSoap(endpoint);
     }
 
-    public outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoap getKPSPublicSoap(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public outsource.tr.gov.nvi.tckimlik.WS.KPSPublicSoap getKPSPublicSoap(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
-            outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub _stub = new outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub(portAddress, this);
+            outsource.tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub _stub = new outsource.tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub(portAddress, this);
             _stub.setPortName(getKPSPublicSoapWSDDServiceName());
             return _stub;
         }
@@ -73,8 +73,8 @@ public class KPSPublicLocator extends org.apache.axis.client.Service implements 
      */
     public java.rmi.Remote getPort(@SuppressWarnings("rawtypes") Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
-            if (outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoap.class.isAssignableFrom(serviceEndpointInterface)) {
-                outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub _stub = new outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub(new java.net.URL(KPSPublicSoap_address), this);
+            if (outsource.tr.gov.nvi.tckimlik.WS.KPSPublicSoap.class.isAssignableFrom(serviceEndpointInterface)) {
+                outsource.tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub _stub = new outsource.tr.gov.nvi.tckimlik.WS.KPSPublicSoapStub(new java.net.URL(KPSPublicSoap_address), this);
                 _stub.setPortName(getKPSPublicSoapWSDDServiceName());
                 return _stub;
             }

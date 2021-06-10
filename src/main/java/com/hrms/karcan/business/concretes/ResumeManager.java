@@ -1,14 +1,8 @@
 package com.hrms.karcan.business.concretes;
 
 import java.io.File;
-import java.lang.reflect.Type;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import org.hibernate.collection.spi.PersistentCollection;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +21,6 @@ import com.hrms.karcan.dataAccess.abstracts.ResumeRepository;
 import com.hrms.karcan.entity.concretes.Resume;
 import com.hrms.karcan.entity.dtos.resumes.ResumeDetailDto;
 import com.hrms.karcan.entity.dtos.resumes.ResumeQualificationDetailDto;
-
-import net.bytebuddy.asm.Advice.This;
 
 
 @Service

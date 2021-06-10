@@ -1,8 +1,7 @@
-package outsources.com.cloudinary;
+package outsource.com.cloudinary;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.cloudinary.json.JSONObject;

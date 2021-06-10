@@ -5,9 +5,9 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package outsources.tr.gov.nvi.tckimlik.WS;
+package outsource.tr.gov.nvi.tckimlik.WS;
 
-public class KPSPublicSoapStub extends org.apache.axis.client.Stub implements outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoap {
+public class KPSPublicSoapStub extends org.apache.axis.client.Stub implements outsource.tr.gov.nvi.tckimlik.WS.KPSPublicSoap {
     @SuppressWarnings({ "rawtypes", "unused" })
 	private java.util.Vector cachedSerClasses = new java.util.Vector();
     @SuppressWarnings({ "unused", "rawtypes" })

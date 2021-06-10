@@ -1,4 +1,4 @@
-package outsources.com.cloudinary;
+package outsource.com.cloudinary;
 
 import javax.validation.constraints.NotNull;
 
@@ -8,7 +8,6 @@ import org.springframework.validation.annotation.Validated;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Component
 @ConfigurationProperties(prefix = "cloudinary")

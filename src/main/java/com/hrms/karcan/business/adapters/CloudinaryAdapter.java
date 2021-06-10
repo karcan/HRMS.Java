@@ -10,8 +10,8 @@ import com.hrms.karcan.core.utilities.result.ErrorResult;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 
-import outsources.com.cloudinary.CloudinaryConfiguration;
-import outsources.com.cloudinary.CloudinaryManager;
+import outsource.com.cloudinary.CloudinaryConfiguration;
+import outsource.com.cloudinary.CloudinaryManager;
 
 @Service
 public class CloudinaryAdapter implements UploaderService {

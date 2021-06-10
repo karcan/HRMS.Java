@@ -55,7 +55,7 @@ public class ResumeEducation {
 	private boolean graduate;
 	
 	@Column(name = "graduate_date")
-	private Date graduate_date;
+	private Date graduateDate;
 	
 	//relation mapping.
 	@ManyToOne(targetEntity = Resume.class, fetch = FetchType.LAZY)

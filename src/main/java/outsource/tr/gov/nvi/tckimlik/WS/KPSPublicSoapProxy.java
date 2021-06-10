@@ -1,8 +1,8 @@
-package outsources.tr.gov.nvi.tckimlik.WS;
+package outsource.tr.gov.nvi.tckimlik.WS;
 
-public class KPSPublicSoapProxy implements outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoap {
+public class KPSPublicSoapProxy implements outsource.tr.gov.nvi.tckimlik.WS.KPSPublicSoap {
   private String _endpoint = null;
-  private outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoap kPSPublicSoap = null;
+  private outsource.tr.gov.nvi.tckimlik.WS.KPSPublicSoap kPSPublicSoap = null;
   
   public KPSPublicSoapProxy() {
     _initKPSPublicSoapProxy();
@@ -15,7 +15,7 @@ public class KPSPublicSoapProxy implements outsources.tr.gov.nvi.tckimlik.WS.KPS
   
   private void _initKPSPublicSoapProxy() {
     try {
-      kPSPublicSoap = (new outsources.tr.gov.nvi.tckimlik.WS.KPSPublicLocator()).getKPSPublicSoap();
+      kPSPublicSoap = (new outsource.tr.gov.nvi.tckimlik.WS.KPSPublicLocator()).getKPSPublicSoap();
       if (kPSPublicSoap != null) {
         if (_endpoint != null)
           ((javax.xml.rpc.Stub)kPSPublicSoap)._setProperty("javax.xml.rpc.service.endpoint.address", _endpoint);
@@ -38,7 +38,7 @@ public class KPSPublicSoapProxy implements outsources.tr.gov.nvi.tckimlik.WS.KPS
     
   }
   
-  public outsources.tr.gov.nvi.tckimlik.WS.KPSPublicSoap getKPSPublicSoap() {
+  public outsource.tr.gov.nvi.tckimlik.WS.KPSPublicSoap getKPSPublicSoap() {
     if (kPSPublicSoap == null)
       _initKPSPublicSoapProxy();
     return kPSPublicSoap;

@@ -18,4 +18,6 @@ public class ValidationMessages {
 	public static final String EMAIL_AND_WEBSITE_MUST_BE_THE_SAME = "E-mail and Website must be the same.";
 	public static final String JOB_TITLE_ALREADY_EXISTS = "Title is already exists.";
 	public static final String RESUME_IS_NOT_EXISTS = "Resume not found.";
+	public static final String IF_IS_GRADUATE_THEN_GRADUATE_DATE_CAN_NOT_BE_NULL = "When is graduate, the graduate date cannot be blank.";
+	public static final String IF_IS_NOT_CONTINUED_THEN_END_DATE_CAN_NOT_BE_NULL = "When is not continued, the end date cannot be blank.";
 }
