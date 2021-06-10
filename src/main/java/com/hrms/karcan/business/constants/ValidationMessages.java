@@ -17,4 +17,5 @@ public class ValidationMessages {
 	public static final String USER_IDENTITY_NUMBER_IS_ALREADY_EXISTS = "Identification Number is already taken.";
 	public static final String EMAIL_AND_WEBSITE_MUST_BE_THE_SAME = "E-mail and Website must be the same.";
 	public static final String JOB_TITLE_ALREADY_EXISTS = "Title is already exists.";
+	public static final String RESUME_IS_NOT_EXISTS = "Resume not found.";
 }
