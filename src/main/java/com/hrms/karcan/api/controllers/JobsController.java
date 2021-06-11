@@ -70,17 +70,17 @@ public class JobsController {
 		return new ResponseEntity<>(new SuccessResult(), HttpStatus.OK);
 	}
 	
-	@PostMapping("set/active/{id}")
+	@PostMapping("{id}/set/active")
 	public ResponseEntity<Result> setActive(@PathVariable(name = "id") int id){
-		return this.setActivePassive(id, true);
+		return this.setActiveAndPassive(id, true);
 	}
 	
-	@PostMapping("set/passive/{id}")
+	@PostMapping("{id}/set/passive")
 	public ResponseEntity<Result> setPassive(@PathVariable(name = "id") int id){
-		return this.setActivePassive(id, false);
+		return this.setActiveAndPassive(id, false);
 	}
 	
-	private ResponseEntity<Result> setActivePassive(int id, boolean status){
+	private ResponseEntity<Result> setActiveAndPassive(int id, boolean status){
 		Result result = this.jobService.setActive(id, status);
 		
 		if (!result.isSuccess()) {

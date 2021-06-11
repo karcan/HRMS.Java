@@ -12,7 +12,7 @@ import com.hrms.karcan.entity.dtos.resumes.ResumeQualificationDetailDto;
 public interface ResumeService {
 	DataResult<List<ResumeDetailDto>> getAllResumeDetailDto();
 	DataResult<ResumeDetailDto> getResumeDetailDtoById(int id);
-	Result uploadImage(int id, File file);
+	Result setImage(int id, File file);
 	Result save(Resume resume);
 	DataResult<Resume> getById(int id);
 	DataResult<List<ResumeQualificationDetailDto>> getAllResumeQualificationDetailDto();

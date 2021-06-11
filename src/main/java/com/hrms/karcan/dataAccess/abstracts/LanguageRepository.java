@@ -8,5 +8,5 @@ import org.springframework.data.repository.query.Param;
 import com.hrms.karcan.entity.concretes.Language;
 
 public interface LanguageRepository extends JpaRepository<Language, Integer> {
-	List<Language> findAllFirst10ByNameContainingIgnoreCase(@Param("name") String name);
+	List<Language> findFirst10ByNameContainingIgnoreCase(@Param("name") String name);
 }

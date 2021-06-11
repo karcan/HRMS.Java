@@ -25,7 +25,7 @@ public class LanguageManager implements LanguageService {
 
 	@Override
 	public DataResult<List<Language>> getAllByName(String name) {
-		return new SuccessDataResult<List<Language>>(this.languageRepository.findAllFirst10ByNameContainingIgnoreCase(name));
+		return new SuccessDataResult<List<Language>>(this.languageRepository.findFirst10ByNameContainingIgnoreCase(name));
 	}
 
 	@Override

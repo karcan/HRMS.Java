@@ -47,18 +47,19 @@ public class ResumesController {
 		return new ResponseEntity<>(new SuccessDataResult<CloudinaryConfiguration>(this.cloudinaryConfiguration) , HttpStatus.OK);
 	}
 	
-	@PostMapping("{id}/image/upload")
+	@PostMapping("{id}/set/image")
 	public ResponseEntity<Result> uploadImage(@PathVariable("id") int id, @RequestParam(value="upload", required=true) MultipartFile aFile){
-		File f = new File("");
+		
+		File file = new File("");
 		try {
-			f = Files.createTempFile("temp", aFile.getOriginalFilename()).toFile();
-			aFile.transferTo(f);
+			file = Files.createTempFile("temp", aFile.getOriginalFilename()).toFile();
+			aFile.transferTo(file);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
-        Result result = this.resumeService.uploadImage(id, f);
+        Result result = this.resumeService.setImage(id, file);
         
         if(!result.isSuccess()) {
         	return new ResponseEntity<Result>(HttpStatus.BAD_REQUEST);

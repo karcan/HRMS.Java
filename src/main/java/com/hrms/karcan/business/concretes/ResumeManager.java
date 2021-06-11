@@ -65,7 +65,7 @@ public class ResumeManager implements ResumeService {
 	}
 	
 	@Override
-	public Result uploadImage(int id, File file) {	
+	public Result setImage(int id, File file) {	
 		
 		Result result = CheckEngine.run(
 				CheckResumeIfNotExists(id)
@@ -75,12 +75,12 @@ public class ResumeManager implements ResumeService {
 			return result;
 		}
 		
-		Result imageUpload = this.uploaderService.imageUpload(file);
+		Result imageResult = this.uploaderService.imageUpload(file);
 		Resume resume = getById(id).getData();
-		resume.setProfilePictureUrl(imageUpload.getMessage());
+		resume.setProfilePictureUrl(imageResult.getMessage());
 		this.save(resume);
 		
-		return imageUpload;
+		return imageResult;
 	}
 	
 	private Result CheckResumeIfNotExists(int id) {

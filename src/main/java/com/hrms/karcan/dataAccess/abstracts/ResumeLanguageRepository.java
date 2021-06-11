@@ -8,5 +8,5 @@ import org.springframework.data.repository.query.Param;
 import com.hrms.karcan.entity.concretes.ResumeLanguage;
 
 public interface ResumeLanguageRepository extends JpaRepository<ResumeLanguage, Integer> {
-	List<ResumeLanguage> findAllByResumeId(@Param("id") int id);
+	List<ResumeLanguage> findAllByResumeId(@Param("resumeId") int resumeId);
 }
