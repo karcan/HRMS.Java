@@ -22,4 +22,8 @@ public class ValidationMessages {
 	public static final String IF_IS_NOT_CONTINUED_THEN_END_DATE_CAN_NOT_BE_NULL = "When is not continued, the end date cannot be blank.";
 	public static final String VERIFICATION_CODE_IS_NOT_EXISTS = "The verification code not found.";
 	public static final String USER_IS_ALREADY_VERIFICATED = "The user already verificated.";
+	public static final String USER_IS_MUST_BE_VERIFIED_FIRST = "You must be verified first.";
+	public static final String USER_IS_ALREADY_CONFIRMED = "The user already confirmed.";
+	public static final String CONFIRMER_IS_NOT_EMPLOYEE = "The user is not employee.";
+	public static final String USER_IS_NOT_EMPLOYER = "The user is not employer.";
 }

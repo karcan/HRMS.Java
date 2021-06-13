@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "candidates")
+@Table(name = "employees")
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
