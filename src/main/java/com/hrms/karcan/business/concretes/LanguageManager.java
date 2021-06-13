@@ -11,7 +11,7 @@ import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.LanguageRepository;
-import com.hrms.karcan.entity.concretes.Language;
+import com.hrms.karcan.entity.tables.Language;
 
 @Service
 public class LanguageManager implements LanguageService {

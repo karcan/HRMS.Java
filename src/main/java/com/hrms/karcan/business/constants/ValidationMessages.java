@@ -20,4 +20,6 @@ public class ValidationMessages {
 	public static final String RESUME_IS_NOT_EXISTS = "Resume not found.";
 	public static final String IF_IS_GRADUATE_THEN_GRADUATE_DATE_CAN_NOT_BE_NULL = "When is graduate, the graduate date cannot be blank.";
 	public static final String IF_IS_NOT_CONTINUED_THEN_END_DATE_CAN_NOT_BE_NULL = "When is not continued, the end date cannot be blank.";
+	public static final String VERIFICATION_CODE_IS_NOT_EXISTS = "The verification code not found.";
+	public static final String USER_IS_ALREADY_VERIFICATED = "The user already verificated.";
 }

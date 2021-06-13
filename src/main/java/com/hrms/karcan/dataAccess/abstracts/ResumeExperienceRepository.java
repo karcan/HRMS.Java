@@ -6,7 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.hrms.karcan.entity.concretes.ResumeExperience;
+import com.hrms.karcan.entity.tables.ResumeExperience;
 
 public interface ResumeExperienceRepository extends JpaRepository<ResumeExperience, Integer> {
 	List<ResumeExperience> findAllByResumeId(@Param("resumeId") int resumeId);

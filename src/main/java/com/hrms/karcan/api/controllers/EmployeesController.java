@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hrms.karcan.business.abstracts.EmployeeService;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.entity.concretes.Employee;
+import com.hrms.karcan.entity.tables.Employee;
 
 @RestController
 @RequestMapping("api/employees")

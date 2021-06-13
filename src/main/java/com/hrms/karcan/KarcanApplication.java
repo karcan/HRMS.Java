@@ -29,7 +29,8 @@ public class KarcanApplication extends SpringBootServletInitializer {
     public Docket api() { 
         return new Docket(DocumentationType.SWAGGER_2)  
           .select()                                  
-          .apis(RequestHandlerSelectors.any())              
+          //.apis(RequestHandlerSelectors.any())    
+          .apis(RequestHandlerSelectors.basePackage("com.hrms.karcan.api.controllers"))
           .paths(PathSelectors.any())                          
           .build();                                           
     }

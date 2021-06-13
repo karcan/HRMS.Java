@@ -17,8 +17,6 @@ import outsource.com.cloudinary.CloudinaryManager;
 public class CloudinaryAdapter implements UploaderService {
 	private CloudinaryConfiguration cloudinaryConfiguration;
 	
-	
-
 	public CloudinaryAdapter(CloudinaryConfiguration cloudinaryConfiguration) {
 		this.cloudinaryConfiguration = cloudinaryConfiguration;
 	}

@@ -16,8 +16,8 @@ import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.JobRepository;
-import com.hrms.karcan.entity.concretes.Job;
 import com.hrms.karcan.entity.dtos.JobSummaryDto;
+import com.hrms.karcan.entity.tables.Job;
 
 
 @Service

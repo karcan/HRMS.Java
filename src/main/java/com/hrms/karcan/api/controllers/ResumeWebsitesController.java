@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hrms.karcan.business.abstracts.ResumeWebsiteService;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.entity.concretes.ResumeWebsite;
 import com.hrms.karcan.entity.dtos.resumes.ResumeWebsiteDetailDto;
+import com.hrms.karcan.entity.tables.ResumeWebsite;
 
 @RestController
 @RequestMapping("api/resume-websites")

@@ -13,8 +13,6 @@ import com.cloudinary.utils.ObjectUtils;
 public class CloudinaryManager {
 	private Cloudinary cloudinary;
 	
-	
-
 	public CloudinaryManager(CloudinaryConfiguration cloudinaryConfiguration) {
 		cloudinary = new Cloudinary(cloudinaryConfiguration.toString());
 	}

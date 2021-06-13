@@ -12,8 +12,8 @@ import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.ResumeQualificationRepository;
-import com.hrms.karcan.entity.concretes.ResumeQualification;
 import com.hrms.karcan.entity.dtos.resumes.ResumeQualificationDetailDto;
+import com.hrms.karcan.entity.tables.ResumeQualification;
 
 @Service
 public class ResumeQualificationManager implements ResumeQualificationService {

@@ -6,7 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.hrms.karcan.entity.concretes.ResumeEducation;
+import com.hrms.karcan.entity.tables.ResumeEducation;
 
 
 public interface ResumeEducationRepository extends JpaRepository<ResumeEducation, Integer> {

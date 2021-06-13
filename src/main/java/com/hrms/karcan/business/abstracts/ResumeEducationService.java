@@ -6,7 +6,7 @@ import org.springframework.data.domain.Sort;
 
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.entity.concretes.ResumeEducation;
+import com.hrms.karcan.entity.tables.ResumeEducation;
 
 
 public interface ResumeEducationService {

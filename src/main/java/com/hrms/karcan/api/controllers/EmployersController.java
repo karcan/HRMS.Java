@@ -18,7 +18,7 @@ import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
-import com.hrms.karcan.entity.concretes.Employer;
+import com.hrms.karcan.entity.tables.Employer;
 
 
 @RestController
@@ -35,7 +35,7 @@ public class EmployersController {
 	public ResponseEntity<DataResult<List<Employer>>> getAll(){
 		return new ResponseEntity<>(new SuccessDataResult<List<Employer>>(this.employerService.getAll()), HttpStatus.OK); 
 	}
-	
+
 	@PostMapping("save")
 	public ResponseEntity<Result> save(@Valid @RequestBody Employer employer){
 		Result result = this.employerService.save(employer);

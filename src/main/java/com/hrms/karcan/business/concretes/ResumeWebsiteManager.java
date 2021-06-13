@@ -12,8 +12,8 @@ import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.ResumeWebsiteRepository;
-import com.hrms.karcan.entity.concretes.ResumeWebsite;
 import com.hrms.karcan.entity.dtos.resumes.ResumeWebsiteDetailDto;
+import com.hrms.karcan.entity.tables.ResumeWebsite;
 
 @Service
 public class ResumeWebsiteManager implements ResumeWebsiteService {

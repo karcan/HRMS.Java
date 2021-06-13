@@ -1,4 +1,4 @@
-package com.hrms.karcan.entity.concretes;
+package com.hrms.karcan.entity.tables;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,11 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hrms.karcan.business.constants.ValidationMessages;
-import com.hrms.karcan.core.entity.BaseEntity;
-import com.hrms.karcan.core.entity.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,28 +22,36 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "qualifications")
+@Table(name = "resume_websites")
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Qualification extends BaseEntity {
+public class ResumeWebsite {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "qualification_id")
+	@Column(name = "resume_website_id")
 	private int id;
 	
+	@NotNull(message = ValidationMessages.NOT_BLANK)
+	@Column(name = "resume_id")
+	private int resumeId;
+	
+	@NotNull(message = ValidationMessages.NOT_BLANK)
+	@Column(name = "website_type_id")
+	private int websiteTypeId;
+	
 	@NotBlank(message = ValidationMessages.NOT_BLANK)
-	@Column(name = "name", unique = true)
-	private String name;
+	@Column(name = "website")
+	private String website;
 	
-	//relation mapping.
-	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+	//relation mapping
+	@ManyToOne(targetEntity = Resume.class, fetch = FetchType.LAZY)
 	@JsonIgnore
-	@JoinColumn(name = "created_user_id", insertable = false, updatable = false)
-	private User createdUser; 
+	@JoinColumn(name = "resume_id", insertable = false, updatable = false)
+	private Resume resume; 
 	
-	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = WebsiteType.class, fetch = FetchType.LAZY)
 	@JsonIgnore
-	@JoinColumn(name = "modified_user_id", insertable = false, updatable = false)
-	private User modifiedUser;
+	@JoinColumn(name = "website_type_id", insertable = false, updatable = false)
+	private WebsiteType websiteType; 
 }

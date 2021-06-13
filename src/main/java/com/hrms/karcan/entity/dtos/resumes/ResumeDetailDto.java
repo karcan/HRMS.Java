@@ -2,8 +2,8 @@ package com.hrms.karcan.entity.dtos.resumes;
 
 import java.util.List;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,4 +29,5 @@ public class ResumeDetailDto extends ResumeSummaryDto {
 	
 	@JsonProperty("experienceInformations")
 	public List<ResumeExperienceDetailDto> resumeExperiences;
+	
 }

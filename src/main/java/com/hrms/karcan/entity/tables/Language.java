@@ -1,4 +1,4 @@
-package com.hrms.karcan.entity.concretes;
+package com.hrms.karcan.entity.tables;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hrms.karcan.business.constants.ValidationMessages;
+import com.hrms.karcan.core.entity.BaseEntity;
 import com.hrms.karcan.core.entity.User;
 
 import lombok.AllArgsConstructor;
@@ -22,14 +23,14 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "website_types")
+@Table(name = "languages")
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class WebsiteType {
+public class Language extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "website_type_id")
+	@Column(name = "language_id")
 	private int id;
 	
 	@NotBlank(message = ValidationMessages.NOT_BLANK)

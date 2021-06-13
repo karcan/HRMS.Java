@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hrms.karcan.business.abstracts.ResumeQualificationService;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.entity.concretes.ResumeQualification;
 import com.hrms.karcan.entity.dtos.resumes.ResumeQualificationDetailDto;
+import com.hrms.karcan.entity.tables.ResumeQualification;
 
 @RestController
 @RequestMapping("api/resume-qualifications")

@@ -16,7 +16,7 @@ import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.ResumeEducationRepository;
-import com.hrms.karcan.entity.concretes.ResumeEducation;
+import com.hrms.karcan.entity.tables.ResumeEducation;
 
 
 @Service

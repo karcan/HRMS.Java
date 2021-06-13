@@ -1,4 +1,4 @@
-package com.hrms.karcan.entity.concretes;
+package com.hrms.karcan.entity.tables;
 
 import java.math.BigDecimal;
 import java.util.Date;

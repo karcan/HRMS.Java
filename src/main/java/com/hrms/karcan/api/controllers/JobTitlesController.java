@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hrms.karcan.business.abstracts.JobTitleService;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.entity.concretes.JobTitle;
+import com.hrms.karcan.entity.tables.JobTitle;
 
 @RestController
 @RequestMapping("api/job-titles")

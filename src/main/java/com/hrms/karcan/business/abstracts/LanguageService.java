@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.entity.concretes.Language;
+import com.hrms.karcan.entity.tables.Language;
 
 public interface LanguageService {
 	DataResult<List<Language>> getAllByName(String name);

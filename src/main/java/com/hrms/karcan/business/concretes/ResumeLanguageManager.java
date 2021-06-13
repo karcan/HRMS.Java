@@ -12,8 +12,8 @@ import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.ResumeLanguageRepository;
-import com.hrms.karcan.entity.concretes.ResumeLanguage;
 import com.hrms.karcan.entity.dtos.resumes.ResumeLanguageDetailDto;
+import com.hrms.karcan.entity.tables.ResumeLanguage;
 
 @Service
 public class ResumeLanguageManager implements ResumeLanguageService{

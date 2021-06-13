@@ -1,6 +1,7 @@
-package com.hrms.karcan.entity.concretes;
+package com.hrms.karcan.entity.tables;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hrms.karcan.business.constants.ValidationMessages;
 
@@ -24,23 +28,33 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "resume_qualifications")
+@Table(name = "resume_languages")
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class ResumeQualification {
+public class ResumeLanguage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "resume_qualification_id")
+	@Column(name = "resume_language_id")
 	private int id;
+	
+	@CreatedDate
+	@JsonIgnore
+    @Column(name = "created_date", updatable = false)
+    private Instant createdDate = Instant.now();
+	
+	@LastModifiedDate
+	@JsonIgnore
+    @Column(name = "modified_date")
+    private Instant modifiedDate = Instant.now();
 	
 	@NotNull(message = ValidationMessages.NOT_BLANK)
 	@Column(name = "resume_id")
 	private int resumeId;
 	
 	@NotNull(message = ValidationMessages.NOT_BLANK)
-	@Column(name = "qualification_id")
-	private int qualificationId;
+	@Column(name = "language_id")
+	private int languageId;
 	
 	@NotNull(message = ValidationMessages.NOT_BLANK)
 	@Size(min = 1, max = 5, message = ValidationMessages.GRADE_MUST_BE_BETWEEN)
@@ -53,8 +67,8 @@ public class ResumeQualification {
 	@JoinColumn(name = "resume_id", insertable = false, updatable = false)
 	private Resume resume; 
 	
-	@ManyToOne(targetEntity = Qualification.class, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = Language.class, fetch = FetchType.LAZY)
 	@JsonIgnore
-	@JoinColumn(name = "qualification_id", insertable = false, updatable = false)
-	private Qualification qualification; 
+	@JoinColumn(name = "language_id", insertable = false, updatable = false)
+	private Language language; 
 }

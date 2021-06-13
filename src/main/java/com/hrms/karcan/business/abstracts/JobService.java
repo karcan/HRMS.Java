@@ -6,8 +6,8 @@ import org.springframework.data.domain.Sort;
 
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.entity.concretes.Job;
 import com.hrms.karcan.entity.dtos.JobSummaryDto;
+import com.hrms.karcan.entity.tables.Job;
 
 public interface JobService {
 	DataResult<List<Job>> getAll();

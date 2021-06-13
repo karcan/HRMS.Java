@@ -1,4 +1,4 @@
-package com.hrms.karcan.entity.concretes;
+package com.hrms.karcan.entity.tables;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

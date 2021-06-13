@@ -24,8 +24,7 @@ import com.hrms.karcan.business.abstracts.CandidateService;
 import com.hrms.karcan.business.constants.ValidationMessages;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.ErrorDataResult;
-import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.entity.concretes.Candidate;
+import com.hrms.karcan.entity.tables.Candidate;
 
 
 @RestController
@@ -45,9 +44,9 @@ public class CandidatesController {
 	}
 	
 	@PostMapping(path = "save")
-	public ResponseEntity<Result> save(@Valid @RequestBody Candidate candidate){
+	public ResponseEntity<DataResult<Candidate>> save(@Valid @RequestBody Candidate candidate){
 		
-		Result result = this.candidateService.save(candidate);
+		DataResult<Candidate> result = this.candidateService.save(candidate);
 		
 		if(result.isSuccess()) {
 			return new ResponseEntity<>(result, HttpStatus.OK);

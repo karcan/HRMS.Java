@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hrms.karcan.business.abstracts.ResumeEducationService;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.entity.concretes.ResumeEducation;
+import com.hrms.karcan.entity.tables.ResumeEducation;
 
 
 @RestController

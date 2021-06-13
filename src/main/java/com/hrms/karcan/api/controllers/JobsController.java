@@ -19,8 +19,8 @@ import com.hrms.karcan.business.abstracts.JobService;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
-import com.hrms.karcan.entity.concretes.Job;
 import com.hrms.karcan.entity.dtos.JobSummaryDto;
+import com.hrms.karcan.entity.tables.Job;
 
 @RestController
 @RequestMapping(path = "/api/jobs")

@@ -14,7 +14,7 @@ import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.JobTitleRepository;
-import com.hrms.karcan.entity.concretes.JobTitle;
+import com.hrms.karcan.entity.tables.JobTitle;
 
 @Service
 public class JobTitleManager implements JobTitleService {
@@ -54,6 +54,6 @@ public class JobTitleManager implements JobTitleService {
 		if(result) {
 			return new ErrorResult(ValidationMessages.JOB_TITLE_ALREADY_EXISTS);
 		}	
-		return new SuccessResult();
+		return new SuccessResult(); 
 	}
 }

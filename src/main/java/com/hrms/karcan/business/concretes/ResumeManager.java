@@ -16,52 +16,43 @@ import com.hrms.karcan.core.utilities.result.ErrorResult;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
-import com.hrms.karcan.dataAccess.abstracts.ResumeQualificationRepository;
 import com.hrms.karcan.dataAccess.abstracts.ResumeRepository;
-import com.hrms.karcan.entity.concretes.Resume;
 import com.hrms.karcan.entity.dtos.resumes.ResumeDetailDto;
-import com.hrms.karcan.entity.dtos.resumes.ResumeQualificationDetailDto;
+import com.hrms.karcan.entity.dtos.resumes.ResumeSummaryDto;
+import com.hrms.karcan.entity.tables.Resume;
 
 
 @Service
 public class ResumeManager implements ResumeService {
 
 	private ResumeRepository resumeRepository;
-	private ResumeQualificationRepository resumeQualificationRepository;
 	private UploaderService uploaderService;
 	
 	@Autowired
-	public ResumeManager(ResumeRepository resumeRepository, ResumeQualificationRepository resumeQualificationRepository, UploaderService uploaderService) {
+	public ResumeManager(ResumeRepository resumeRepository, UploaderService uploaderService) {
 		this.resumeRepository = resumeRepository;
-		this.resumeQualificationRepository = resumeQualificationRepository;
 		this.uploaderService = uploaderService;
 	}
 
+	public DataResult<List<ResumeSummaryDto>> getAllSummaryDto() {
+		return new SuccessDataResult<List<ResumeSummaryDto>>(ModelMapperUtils.toList(
+				this.resumeRepository.findAll(),
+				ResumeSummaryDto.class)
+				);
+	}
+	
 	@Override
-	public DataResult<List<ResumeDetailDto>> getAllResumeDetailDto() {
+	public DataResult<List<ResumeDetailDto>> getDetailDtoById(int id) {
 		return new SuccessDataResult<List<ResumeDetailDto>>(ModelMapperUtils.toList(
 				this.resumeRepository.findAll(),
 				ResumeDetailDto.class)
 				);
 	}
-
-	@Override
-	public DataResult<ResumeDetailDto> getResumeDetailDtoById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DataResult<List<ResumeQualificationDetailDto>> getAllResumeQualificationDetailDto() {
-		return new SuccessDataResult<List<ResumeQualificationDetailDto>>(ModelMapperUtils.toList(
-				this.resumeQualificationRepository.findAll(), 
-				ResumeQualificationDetailDto.class)
-				);
-	}
 	
 	@Override
-	public DataResult<Resume> getById(int id) {
-		return new SuccessDataResult<Resume>(this.resumeRepository.findById(id).orElse(null));
+	public Result save(Resume resume) {
+		this.resumeRepository.save(resume);
+		return new SuccessResult();
 	}
 	
 	@Override
@@ -83,6 +74,11 @@ public class ResumeManager implements ResumeService {
 		return imageResult;
 	}
 	
+	@Override
+	public DataResult<Resume> getById(int id) {
+		return new SuccessDataResult<Resume>(this.resumeRepository.findById(id).orElse(null));
+	}
+	
 	private Result CheckResumeIfNotExists(int id) {
 		boolean result = this.resumeRepository.existsById(id);
 		if(!result) {
@@ -91,13 +87,5 @@ public class ResumeManager implements ResumeService {
 		
 		return new SuccessResult();
 	}
-
-	@Override
-	public Result save(Resume resume) {
-		this.resumeRepository.save(resume);
-		return new SuccessResult();
-	}
-
-	
 
 }

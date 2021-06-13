@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hrms.karcan.business.abstracts.WebsiteTypeService;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.entity.concretes.WebsiteType;
+import com.hrms.karcan.entity.tables.WebsiteType;
 
 @RestController
 @RequestMapping("api/website-types")

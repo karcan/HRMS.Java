@@ -1,4 +1,4 @@
-package com.hrms.karcan.entity.concretes;
+package com.hrms.karcan.entity.tables;
 
 import java.math.BigDecimal;
 
@@ -24,14 +24,14 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "resume_languages")
+@Table(name = "resume_qualifications")
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class ResumeLanguage {
+public class ResumeQualification {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "resume_language_id")
+	@Column(name = "resume_qualification_id")
 	private int id;
 	
 	@NotNull(message = ValidationMessages.NOT_BLANK)
@@ -39,8 +39,8 @@ public class ResumeLanguage {
 	private int resumeId;
 	
 	@NotNull(message = ValidationMessages.NOT_BLANK)
-	@Column(name = "language_id")
-	private int languageId;
+	@Column(name = "qualification_id")
+	private int qualificationId;
 	
 	@NotNull(message = ValidationMessages.NOT_BLANK)
 	@Size(min = 1, max = 5, message = ValidationMessages.GRADE_MUST_BE_BETWEEN)
@@ -53,8 +53,8 @@ public class ResumeLanguage {
 	@JoinColumn(name = "resume_id", insertable = false, updatable = false)
 	private Resume resume; 
 	
-	@ManyToOne(targetEntity = Language.class, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = Qualification.class, fetch = FetchType.LAZY)
 	@JsonIgnore
-	@JoinColumn(name = "language_id", insertable = false, updatable = false)
-	private Language language; 
+	@JoinColumn(name = "qualification_id", insertable = false, updatable = false)
+	private Qualification qualification; 
 }

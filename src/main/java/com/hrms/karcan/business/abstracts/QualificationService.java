@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.entity.concretes.Qualification;
+import com.hrms.karcan.entity.tables.Qualification;
 
 public interface QualificationService {
 	DataResult<List<Qualification>> getAllByName(String name);

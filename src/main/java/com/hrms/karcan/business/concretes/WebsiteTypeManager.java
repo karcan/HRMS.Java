@@ -11,7 +11,7 @@ import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.WebsiteTypeRepository;
-import com.hrms.karcan.entity.concretes.WebsiteType;
+import com.hrms.karcan.entity.tables.WebsiteType;
 
 @Service
 public class WebsiteTypeManager implements WebsiteTypeService {

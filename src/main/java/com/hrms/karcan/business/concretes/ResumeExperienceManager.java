@@ -16,7 +16,7 @@ import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.ResumeExperienceRepository;
-import com.hrms.karcan.entity.concretes.ResumeExperience;
+import com.hrms.karcan.entity.tables.ResumeExperience;
 
 @Service
 public class ResumeExperienceManager implements ResumeExperienceService {

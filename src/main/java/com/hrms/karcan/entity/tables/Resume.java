@@ -1,4 +1,4 @@
-package com.hrms.karcan.entity.concretes;
+package com.hrms.karcan.entity.tables;
 
 
 import javax.persistence.GeneratedValue;
@@ -14,7 +14,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hrms.karcan.core.entity.BaseEntity;
@@ -42,9 +44,7 @@ public class Resume extends BaseEntity{
 	
 	@Column(name = "cover_letter")
 	private String coverLetter;
-	
-	
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "resume", cascade = CascadeType.ALL)
 	private List<ResumeQualification> resumeQualifications;
@@ -75,4 +75,6 @@ public class Resume extends BaseEntity{
 	@JsonIgnore
 	@JoinColumn(name = "modified_user_id", insertable = false, updatable = false)
 	private Candidate modifiedUser; 
+	
+
 }

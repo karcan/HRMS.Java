@@ -11,7 +11,7 @@ import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.EmployeeRepository;
-import com.hrms.karcan.entity.concretes.Employee;
+import com.hrms.karcan.entity.tables.Employee;
 
 @Service
 public class EmployeeManager implements EmployeeService {

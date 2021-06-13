@@ -14,7 +14,7 @@ import com.hrms.karcan.core.utilities.result.ErrorResult;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.EmployerRepository;
-import com.hrms.karcan.entity.concretes.Employer;
+import com.hrms.karcan.entity.tables.Employer;
 
 @Service
 public class EmployerManager implements EmployerService {
@@ -34,7 +34,7 @@ public class EmployerManager implements EmployerService {
 	public List<Employer> getAll() {
 		return this.employerRepository.findAll();
 	}
-
+	
 	@Override
 	public Result save(Employer employer) {
 		
@@ -49,7 +49,7 @@ public class EmployerManager implements EmployerService {
 		
 		employerRepository.save(employer);
 		//TODO: get activation code for user activation.
-		this.mailSendService.send(employer.getEmail(), null);
+		this.mailSendService.sendMail(employer.getEmail(), null, null);
 		
 		return new SuccessResult();
 	}
@@ -65,5 +65,4 @@ public class EmployerManager implements EmployerService {
 		
 		return new SuccessResult();
 	}
-	
 }

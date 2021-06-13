@@ -1,4 +1,6 @@
-package com.hrms.karcan.entity.concretes;
+package com.hrms.karcan.entity.tables;
+
+import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,52 +14,53 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hrms.karcan.business.constants.ValidationMessages;
-import com.hrms.karcan.core.entity.BaseEntity;
 import com.hrms.karcan.core.entity.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "cities")
+@Table(name = "user_verifications")
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-
-public class City extends BaseEntity {
-	
+public class UserVerification {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "city_id")
+	@Column(name = "user_verification_id")
 	private int id;
 	
+	@CreatedDate
+	@JsonIgnore
+    @Column(name = "created_date", updatable = false)
+    private Instant createdDate = Instant.now();
+	
 	@NotNull(message = ValidationMessages.NOT_BLANK)
-	@Column(name = "state_id")
-	private int stateId;
+	@Column(name = "user_id")
+	private int userId;
 	
 	@NotBlank(message = ValidationMessages.NOT_BLANK)
-	@Column(name = "name")
-	private String name;
+	@Column(name = "code")
+	private String code;
 	
-
-	//relation mapping.
-	@ManyToOne(targetEntity = State.class, fetch = FetchType.LAZY)
-	@JsonIgnore
-	@JoinColumn(name = "state_id" , insertable = false, updatable = false)
-	private State country;
+	@NotNull(message = ValidationMessages.NOT_BLANK)
+	@Column(name = "expiry_date")
+	private Instant expiryDate;
 	
+	
+	@NotNull(message = ValidationMessages.NOT_BLANK)
+	@Column(name = "verification_date")
+	private Instant verificationDate;
+	
+	//relation mapping
 	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
 	@JsonIgnore
-	@JoinColumn(name = "created_user_id", insertable = false, updatable = false)
-	private User createdUser; 
+	@JoinColumn(name = "user_id", insertable = false, updatable = false)
+	private User user; 
 	
-	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
-	@JsonIgnore
-	@JoinColumn(name = "modified_user_id", insertable = false, updatable = false)
-	private User modifiedUser; 
 }

@@ -6,7 +6,7 @@ import org.springframework.data.domain.Sort;
 
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.entity.concretes.ResumeExperience;
+import com.hrms.karcan.entity.tables.ResumeExperience;
 
 public interface ResumeExperienceService {
 	DataResult<List<ResumeExperience>> getAllByResumeId(int id);

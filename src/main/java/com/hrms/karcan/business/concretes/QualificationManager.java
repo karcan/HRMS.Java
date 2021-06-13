@@ -10,7 +10,7 @@ import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.QualificationRepository;
-import com.hrms.karcan.entity.concretes.Qualification;
+import com.hrms.karcan.entity.tables.Qualification;
 
 public class QualificationManager implements QualificationService {
 	private QualificationRepository qualificationRepository;

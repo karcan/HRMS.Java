@@ -1,4 +1,4 @@
-package com.hrms.karcan.entity.concretes;
+package com.hrms.karcan.entity.tables;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,11 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hrms.karcan.business.constants.ValidationMessages;
-import com.hrms.karcan.core.entity.BaseEntity;
 import com.hrms.karcan.core.entity.User;
 
 import lombok.AllArgsConstructor;
@@ -24,36 +22,21 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "states")
+@Table(name = "website_types")
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class State extends BaseEntity {
-	
+public class WebsiteType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "state_id")
+	@Column(name = "website_type_id")
 	private int id;
 	
-	@NotNull(message = ValidationMessages.NOT_BLANK)
-	@Column(name = "country_id")
-	private int countryId;
-	
 	@NotBlank(message = ValidationMessages.NOT_BLANK)
-	@Column(name = "name")
+	@Column(name = "name", unique = true)
 	private String name;
 	
-	@NotBlank(message = ValidationMessages.NOT_BLANK)
-	@Column(name = "code")
-	private String code;
-
-	
-	//relations mapping.
-	@ManyToOne(targetEntity = Country.class, fetch = FetchType.LAZY)
-	@JsonIgnore
-	@JoinColumn(name = "country_id" , insertable = false, updatable = false)
-	private Country country;
-	
+	//relation mapping.
 	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name = "created_user_id", insertable = false, updatable = false)
@@ -63,5 +46,4 @@ public class State extends BaseEntity {
 	@JsonIgnore
 	@JoinColumn(name = "modified_user_id", insertable = false, updatable = false)
 	private User modifiedUser; 
-	
 }

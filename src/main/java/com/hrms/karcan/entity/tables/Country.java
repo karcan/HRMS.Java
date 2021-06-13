@@ -1,4 +1,4 @@
-package com.hrms.karcan.entity.concretes;
+package com.hrms.karcan.entity.tables;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,20 +23,32 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "job_titles")
+@Table(name = "countries")
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class JobTitle extends BaseEntity{
-	
+public class Country extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "job_title_id")
+	@Column(name = "country_id")
 	private int id;
 	
-	@Column(name = "title", unique = true)
 	@NotBlank(message = ValidationMessages.NOT_BLANK)
-	private String title;
+	@Column(name = "name")
+	private String name;
+	
+	@NotBlank(message = ValidationMessages.NOT_BLANK)
+	@Column(name = "iso")
+	private String iso;
+	
+	@NotBlank(message = ValidationMessages.NOT_BLANK)
+	@Column(name = "phone_code")
+	private String phoneCode;
+	
+	@NotBlank(message = ValidationMessages.NOT_BLANK)
+	@Column(name = "currency_code")
+	private String currencyCode;
+	
 	
 	//relation mapping.
 	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
