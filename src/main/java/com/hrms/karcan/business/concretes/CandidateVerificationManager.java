@@ -13,7 +13,7 @@ import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.dataAccess.abstracts.UserVerificationRepository;
 import com.hrms.karcan.entity.tables.UserVerification;
 
-@Service
+@Service 
 public class CandidateVerificationManager extends UserVerificationManager implements CandidateVerificationService {
 	private UserRepository userRepository;
 	
