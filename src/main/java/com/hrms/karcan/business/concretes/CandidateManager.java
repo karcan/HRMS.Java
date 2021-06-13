@@ -32,7 +32,7 @@ public class CandidateManager implements CandidateService {
 		
 		Result result = CheckEngine.run(
 				checkCandidateIsNotRealPerson(candidate),
-				this.factory.userCheckService().checkIfEmailAlreadyExists(candidate.getEmail(), candidate.getId()),
+				checkIfEmailAlreadyExists(candidate.getEmail(), candidate.getId()),
 				checkIfIdentityNumberAlreadyExists(candidate)
 				);
 		
@@ -82,5 +82,8 @@ public class CandidateManager implements CandidateService {
 		
 		return new SuccessResult();
 	}
-
+	
+	private Result checkIfEmailAlreadyExists(String email, int userId) {
+		return this.factory.userCheckService().checkIfEmailAlreadyExists(email, userId);
+	}
 }
