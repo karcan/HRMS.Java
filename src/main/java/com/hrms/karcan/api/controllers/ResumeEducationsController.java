@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hrms.karcan.business.abstracts.ResumeEducationService;
 import com.hrms.karcan.core.utilities.result.DataResult;
-import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.entity.tables.ResumeEducation;
 
 
@@ -43,8 +42,8 @@ public class ResumeEducationsController {
 	}
 	
 	@PostMapping("save")
-	public ResponseEntity<Result> save(@Valid @RequestBody ResumeEducation resumeEducation) {
-		Result result = this.resumeEducationService.save(resumeEducation);
+	public ResponseEntity<DataResult<ResumeEducation>> save(@Valid @RequestBody ResumeEducation resumeEducation) {
+		DataResult<ResumeEducation> result = this.resumeEducationService.save(resumeEducation);
 		
 		if(!result.isSuccess()) {
 			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);

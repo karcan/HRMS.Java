@@ -31,7 +31,4 @@ public class Employer extends User {
 	@NotBlank(message = ValidationMessages.NOT_BLANK)
 	@Column(name = "website")
 	private String website; 
-
-	
-	
 }

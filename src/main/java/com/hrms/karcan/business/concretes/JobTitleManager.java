@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hrms.karcan.business.abstracts.JobTitleService;
+import com.hrms.karcan.business.constants.Messages;
 import com.hrms.karcan.business.constants.ValidationMessages;
 import com.hrms.karcan.core.utilities.business.CheckEngine;
 import com.hrms.karcan.core.utilities.result.DataResult;
@@ -33,19 +34,19 @@ public class JobTitleManager implements JobTitleService {
 	}
 
 	@Override
-	public Result save(JobTitle jobTitle) {
+	public DataResult<JobTitle> save(JobTitle jobTitle) {
 		
 		Result result = CheckEngine.run(
 				checkIfExistsJobTitle(jobTitle)
 				);
 		
 		if(!result.isSuccess()) {
-			return result;
+			return new DataResult<>(result.isSuccess(), result.getMessage(), null);
 		}
 		
 		this.jobTitleRepository.save(jobTitle);
 		
-		return new SuccessResult();
+		return new SuccessDataResult<>(Messages.JOB_TITLE_SAVE_IS_SUCCESSFUL, jobTitle);
 	}
 	
 	private Result checkIfExistsJobTitle(JobTitle jobTitle) {		

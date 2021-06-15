@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hrms.karcan.business.abstracts.EmployerService;
+import com.hrms.karcan.business.constants.MailTemplates;
 import com.hrms.karcan.business.constants.Messages;
 import com.hrms.karcan.business.constants.ValidationMessages;
 import com.hrms.karcan.business.dependencyResolvers.factories.EmployerServiceFactory;
@@ -13,6 +14,7 @@ import com.hrms.karcan.core.utilities.business.CheckEngine;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.ErrorResult;
 import com.hrms.karcan.core.utilities.result.Result;
+import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.entity.tables.Employer;
 import com.hrms.karcan.entity.tables.UserVerification;
@@ -27,30 +29,35 @@ public class EmployerManager implements EmployerService {
 	}
 
 	@Override
-	public List<Employer> getAll() {
-		return this.factory.employerRepository().findAll();
+	public DataResult<List<Employer>> getAll() {
+		return new SuccessDataResult<>(this.factory.employerRepository().findAll());
 	}
 	
 	@Override
-	public Result save(Employer employer) {
+	public DataResult<Employer> save(Employer employer) {
 		
 		Result result = CheckEngine.run(
-				this.factory.userCheckService().checkIfEmailAlreadyExists(employer.getEmail(), employer.getId()),
+				checkIfEmailAlreadyExists(employer.getEmail(), employer.getId()),
 				checkIfNotBeTheSameEmailAndWebsite(employer)
 				);
 		
 		if(!result.isSuccess()) {
-			return result;
+			return new DataResult<>(result.isSuccess(), result.getMessage(), null);
 		}
 		
 		this.factory.employerRepository().save(employer);
 		DataResult<UserVerification> userVerification = this.factory.employerVerificationService().generate(employer.getId());
 		if(userVerification.isSuccess()) {
-			this.factory.mailSendService().sendMail(employer.getEmail(), Messages.USER_VERIFICATION_SUBJECT, userVerification.getData().getCode());
+			this.factory.mailSendService().sendMail(
+					employer.getEmail(), 
+					Messages.USER_VERIFICATION_SUBJECT, 
+					MailTemplates.CANDIDATE_VERIFICATION_BODY.replace("{code}",userVerification.getData().getCode()));
 		}
 		
-		return new SuccessResult();
+		return new SuccessDataResult<>(Messages.EMPLOYER_SAVE_IS_SUCCESSFUL, employer);
 	}
+	
+	// Checks & Rules
 	
 	private Result checkIfNotBeTheSameEmailAndWebsite(Employer employer) 
 	{
@@ -62,5 +69,9 @@ public class EmployerManager implements EmployerService {
 		}
 		
 		return new SuccessResult();
+	}
+	
+	private Result checkIfEmailAlreadyExists(String email, int userId) {
+		return this.factory.userCheckService().checkIfEmailAlreadyExists(email, userId);
 	}
 }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.hrms.karcan.business.abstracts.UserCheckService;
 import com.hrms.karcan.business.constants.ValidationMessages;
-import com.hrms.karcan.core.dataAccess.UserRepository;
+import com.hrms.karcan.core.dataAccess.abstracts.UserRepository;
 import com.hrms.karcan.core.utilities.result.ErrorResult;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessResult;

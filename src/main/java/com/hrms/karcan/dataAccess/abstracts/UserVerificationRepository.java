@@ -1,12 +1,12 @@
 package com.hrms.karcan.dataAccess.abstracts;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.hrms.karcan.core.dataAccess.abstracts.BaseRepository;
 import com.hrms.karcan.entity.tables.UserVerification;
 
-public interface UserVerificationRepository extends JpaRepository<UserVerification, Integer> {
+public interface UserVerificationRepository extends BaseRepository<UserVerification, Integer> {
 	
 	@Query(value = "SELECT CASE WHEN COUNT(uv) > 0 THEN true ELSE false END "
 			+ "FROM UserVerification uv "

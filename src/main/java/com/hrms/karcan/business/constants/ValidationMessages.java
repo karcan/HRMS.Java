@@ -26,4 +26,5 @@ public class ValidationMessages {
 	public static final String USER_IS_ALREADY_CONFIRMED = "The user already confirmed.";
 	public static final String CONFIRMER_IS_NOT_EMPLOYEE = "The user is not employee.";
 	public static final String USER_IS_NOT_EMPLOYER = "The user is not employer.";
+	public static final String JOB_IS_NOT_FOUND = "Job is not found.";
 }

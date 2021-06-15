@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hrms.karcan.business.abstracts.JobService;
 import com.hrms.karcan.core.utilities.result.DataResult;
-import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.entity.dtos.JobSummaryDto;
 import com.hrms.karcan.entity.tables.Job;
 
@@ -59,34 +57,34 @@ public class JobsController {
 	}
 
 	@PostMapping("save")
-	public ResponseEntity<Result> save(@Valid @RequestBody Job job) {
+	public ResponseEntity<DataResult<Job>> save(@Valid @RequestBody Job job) {
 
-		Result result = this.jobService.save(job);
+		DataResult<Job> result = this.jobService.save(job);
 
 		if (!result.isSuccess()) {
 			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
 		}
 
-		return new ResponseEntity<>(new SuccessResult(), HttpStatus.OK);
+		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 	
 	@PostMapping("{id}/set/active")
-	public ResponseEntity<Result> setActive(@PathVariable(name = "id") int id){
+	public ResponseEntity<DataResult<Job>> setActive(@PathVariable(name = "id") int id){
 		return this.setActiveAndPassive(id, true);
 	}
 	
 	@PostMapping("{id}/set/passive")
-	public ResponseEntity<Result> setPassive(@PathVariable(name = "id") int id){
+	public ResponseEntity<DataResult<Job>> setPassive(@PathVariable(name = "id") int id){
 		return this.setActiveAndPassive(id, false);
 	}
 	
-	private ResponseEntity<Result> setActiveAndPassive(int id, boolean status){
-		Result result = this.jobService.setActive(id, status);
+	private ResponseEntity<DataResult<Job>> setActiveAndPassive(int id, boolean status){
+		DataResult<Job> result = this.jobService.setActive(id, status);
 		
 		if (!result.isSuccess()) {
 			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
 		}
 
-		return new ResponseEntity<>(new SuccessResult(), HttpStatus.OK);
+		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 }

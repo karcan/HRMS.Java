@@ -3,7 +3,7 @@ package com.hrms.karcan.business.dependencyResolvers.factories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hrms.karcan.core.dataAccess.UserRepository;
+import com.hrms.karcan.core.dataAccess.abstracts.UserRepository;
 import com.hrms.karcan.dataAccess.abstracts.EmployeeRepository;
 import com.hrms.karcan.dataAccess.abstracts.EmployerRepository;
 import com.hrms.karcan.dataAccess.abstracts.UserConfirmRepository;

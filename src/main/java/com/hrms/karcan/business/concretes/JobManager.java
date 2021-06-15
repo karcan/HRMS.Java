@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.hrms.karcan.business.abstracts.JobService;
+import com.hrms.karcan.business.constants.Messages;
+import com.hrms.karcan.business.constants.ValidationMessages;
 import com.hrms.karcan.core.utilities.result.DataResult;
-import com.hrms.karcan.core.utilities.result.ErrorResult;
-import com.hrms.karcan.core.utilities.result.Result;
+import com.hrms.karcan.core.utilities.result.ErrorDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
-import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.dataAccess.abstracts.JobRepository;
 import com.hrms.karcan.entity.dtos.JobSummaryDto;
 import com.hrms.karcan.entity.tables.Job;
@@ -36,10 +36,22 @@ public class JobManager implements JobService {
 	}
 
 	@Override
-	public Result save(@Valid @RequestBody Job job) {
-		this.jobRepository.save(job);
+	public DataResult<Job> save(@Valid @RequestBody Job job) {
+		return new SuccessDataResult<>(Messages.JOB_SAVE_IS_SUCCESSFUL ,this.jobRepository.save(job));
+	}
+	
+	@Override
+	public DataResult<Job> setActive(int id, boolean status) {
+		Job job = this.jobRepository.findById(id).orElse(null);
 		
-		return new SuccessResult();
+		if(job == null) {
+			return new ErrorDataResult<>(ValidationMessages.JOB_IS_NOT_FOUND, null);
+		}
+		
+		job.setActive(status);
+		this.jobRepository.save(job);
+		return new SuccessDataResult<>(Messages.JOB_SAVE_IS_SUCCESSFUL, job);
+		
 	}
 
 	@Override
@@ -63,16 +75,6 @@ public class JobManager implements JobService {
 		return new SuccessDataResult<List<JobSummaryDto>>(this.jobRepository.getAllJobSummaryDtoByJobTitle(jobTitle));
 	}
 
-	@Override
-	public Result setActive(int id, boolean status) {
-		Job job = this.jobRepository.findById(id).orElse(null);
-		if(job != null) {
-			job.setActive(status);
-			this.jobRepository.save(job);
-			return new SuccessResult();
-		}
-		
-		return new ErrorResult();
-	}
+	
 
 }

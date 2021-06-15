@@ -1,4 +1,4 @@
-package outsource.com.cloudinary;
+package com.hrms.karcan.business.adapters.cloudinary;
 
 import javax.validation.constraints.NotNull;
 

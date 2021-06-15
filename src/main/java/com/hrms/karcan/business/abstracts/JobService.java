@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.domain.Sort;
 
 import com.hrms.karcan.core.utilities.result.DataResult;
-import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.entity.dtos.JobSummaryDto;
 import com.hrms.karcan.entity.tables.Job;
 
@@ -15,6 +14,6 @@ public interface JobService {
 	DataResult<List<JobSummaryDto>> getAllJobSummaryDtoSorted(Sort.Direction direction, String property);
 	DataResult<List<JobSummaryDto>> getAllJobSummaryDtoByCompanyName(String companyName);
 	DataResult<List<JobSummaryDto>> getAllJobSummaryDtoByJobTitle(String jobTitle);
-	Result save(Job job);
-	Result setActive(int id, boolean status);
+	DataResult<Job> save(Job job);
+	DataResult<Job> setActive(int id, boolean status);
 }

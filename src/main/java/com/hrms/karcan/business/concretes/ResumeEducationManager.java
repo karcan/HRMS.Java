@@ -8,9 +8,11 @@ import org.springframework.data.domain.Sort.NullHandling;
 import org.springframework.stereotype.Service;
 
 import com.hrms.karcan.business.abstracts.ResumeEducationService;
+import com.hrms.karcan.business.constants.Messages;
 import com.hrms.karcan.business.constants.ValidationMessages;
 import com.hrms.karcan.core.utilities.business.CheckEngine;
 import com.hrms.karcan.core.utilities.result.DataResult;
+import com.hrms.karcan.core.utilities.result.ErrorDataResult;
 import com.hrms.karcan.core.utilities.result.ErrorResult;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
@@ -50,18 +52,18 @@ public class ResumeEducationManager implements ResumeEducationService {
 	}
 
 	@Override
-	public Result save(ResumeEducation resumeEducation) {
+	public DataResult<ResumeEducation> save(ResumeEducation resumeEducation) {
 		
 		Result result = CheckEngine.run(
 				checkIfIsGraduateThenGraduateDateNotNull(resumeEducation)
 				);
 		
 		if(!result.isSuccess()) {
-			return result;
+			return new ErrorDataResult<>(result.getMessage(), resumeEducation);
 		}
 		
 		this.resumeEducationRepository.save(resumeEducation);
-		return new SuccessResult();
+		return new SuccessDataResult<>(Messages.RESUME_EDUCATION_SAVE_IS_SUCCESSFUL, resumeEducation);
 	}
 	
 	private Result checkIfIsGraduateThenGraduateDateNotNull(ResumeEducation resumeEducation) {

@@ -2,17 +2,19 @@ package com.hrms.karcan.business.concretes;
 
 import java.io.File;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hrms.karcan.business.abstracts.MediaService;
 import com.hrms.karcan.business.abstracts.ResumeService;
-import com.hrms.karcan.business.abstracts.UploaderService;
+import com.hrms.karcan.business.constants.Messages;
 import com.hrms.karcan.business.constants.ValidationMessages;
 import com.hrms.karcan.core.utilities.business.CheckEngine;
 import com.hrms.karcan.core.utilities.mappers.ModelMapperUtils;
 import com.hrms.karcan.core.utilities.result.DataResult;
+import com.hrms.karcan.core.utilities.result.ErrorDataResult;
 import com.hrms.karcan.core.utilities.result.ErrorResult;
+import com.hrms.karcan.core.utilities.result.MediaResult;
 import com.hrms.karcan.core.utilities.result.Result;
 import com.hrms.karcan.core.utilities.result.SuccessDataResult;
 import com.hrms.karcan.core.utilities.result.SuccessResult;
@@ -26,12 +28,12 @@ import com.hrms.karcan.entity.tables.Resume;
 public class ResumeManager implements ResumeService {
 
 	private ResumeRepository resumeRepository;
-	private UploaderService uploaderService;
+	private MediaService mediaService;
 	
 	@Autowired
-	public ResumeManager(ResumeRepository resumeRepository, UploaderService uploaderService) {
+	public ResumeManager(ResumeRepository resumeRepository, MediaService mediaService) {
 		this.resumeRepository = resumeRepository;
-		this.uploaderService = uploaderService;
+		this.mediaService = mediaService;
 	}
 
 	public DataResult<List<ResumeSummaryDto>> getAllSummaryDto() {
@@ -50,28 +52,28 @@ public class ResumeManager implements ResumeService {
 	}
 	
 	@Override
-	public Result save(Resume resume) {
+	public DataResult<Resume> save(Resume resume) {
 		this.resumeRepository.save(resume);
-		return new SuccessResult();
+		return new SuccessDataResult<>(Messages.RESUME_SAVE_IS_SUCCESSFUL, resume);
 	}
 	
 	@Override
-	public Result setImage(int id, File file) {	
+	public DataResult<Resume> setImage(int id, File file) {	
 		
 		Result result = CheckEngine.run(
 				CheckResumeIfNotExists(id)
 				);
 		
 		if(!result.isSuccess()) {
-			return result;
+			return new ErrorDataResult<>(result.getMessage(), null);
 		}
 		
-		Result imageResult = this.uploaderService.imageUpload(file);
+		DataResult<MediaResult> imageResult = this.mediaService.setImage(file);
 		Resume resume = getById(id).getData();
-		resume.setProfilePictureUrl(imageResult.getMessage());
+		resume.setProfilePictureUrl(imageResult.getData().getUrl());
 		this.save(resume);
 		
-		return imageResult;
+		return new SuccessDataResult<Resume>(imageResult.getData().getUrl(), resume);
 	}
 	
 	@Override

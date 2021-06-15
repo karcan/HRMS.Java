@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hrms.karcan.business.abstracts.EmployerService;
 import com.hrms.karcan.core.utilities.result.DataResult;
 import com.hrms.karcan.core.utilities.result.Result;
-import com.hrms.karcan.core.utilities.result.SuccessDataResult;
-import com.hrms.karcan.core.utilities.result.SuccessResult;
 import com.hrms.karcan.entity.tables.Employer;
 
 
@@ -33,15 +31,15 @@ public class EmployersController {
 	
 	@GetMapping("")
 	public ResponseEntity<DataResult<List<Employer>>> getAll(){
-		return new ResponseEntity<>(new SuccessDataResult<List<Employer>>(this.employerService.getAll()), HttpStatus.OK); 
+		return new ResponseEntity<>(this.employerService.getAll(), HttpStatus.OK); 
 	}
 
 	@PostMapping("save")
 	public ResponseEntity<Result> save(@Valid @RequestBody Employer employer){
-		Result result = this.employerService.save(employer);
+		DataResult<Employer> result = this.employerService.save(employer);
 		if(!result.isSuccess()) {
 			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<>(new SuccessResult(), HttpStatus.OK);
+		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 }
