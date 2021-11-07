@@ -1,0 +1,23 @@
+- name: Netlify Deploy
+  # You may pin to the exact commit or the version.
+  # uses: jsmrcaga/action-netlify-deploy@a7332308c8cc7bae34597941cd9c8a55596217ce
+  uses: jsmrcaga/action-netlify-deploy@v1.6.0
+  with:
+    # Auth token to use with netlify
+    NETLIFY_AUTH_TOKEN: # default is 
+    # Your Netlify site id
+    NETLIFY_SITE_ID: # default is 
+    # Should the site be deployed to production?
+    NETLIFY_DEPLOY_TO_PROD: # optional
+    # A deploy message
+    NETLIFY_DEPLOY_MESSAGE: # optional, default is 
+    # Directory where built files are stored
+    build_directory: # default is build
+    # Directory where built files are stored
+    functions_directory: # optional, default is 
+    # Command to install dependencies
+    install_command: # optional, default is 
+    # Command to build static website
+    build_command: # optional, default is npm run build
+    # Deployment Subdomain name
+    deploy_alias: # optional, default is 
