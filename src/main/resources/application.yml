@@ -5,7 +5,7 @@ spring:
   datasource:
      url: jdbc:postgresql://192.168.1.150:5432/hrms
      username: postgres
-     password: Karcan*
+     password: ${DB_PASSWORD}
 
   jpa:
      properties:
@@ -24,8 +24,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: vhelsing3347@gmail.com
-    password: 1234567Qq!
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     properties:
        mail:
          smtp:
@@ -33,6 +33,6 @@ spring:
            starttls: 
              enable: true
 cloudinary:
-  api-key: 975632161177458
-  secret: N6E2J8XugNgY7aWgJYxaqR50jTE
+  api-key: ${CLOUDINARY_API_KEY}
+  secret: ${CLOUDINARY_SECRET}
   cloud-name: doljmeipy
